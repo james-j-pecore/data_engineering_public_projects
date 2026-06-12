@@ -32,22 +32,6 @@ This repository serves as my **recruiter-friendly showcase**, highlighting:
 
 ---
 
-### 🟣 NLP Political Classification Pipeline *(Coming Soon 🚧)*
-- **Natural Language Processing** pipeline for **political news classification**
-- Live scraping (e.g., NewsAPI), text preprocessing, LLM embeddings
-- **Explainable classification models** (e.g., XGBoost/LogReg) on political orientation
-- 📊 *Focus*: **clean NLP pipeline for political risk scoring**
-
----
-
-### 🟣 Healthcare Data Signals Pipeline *(Coming Soon 🚧)*
-- **Healthcare data pipeline** (e.g., CDC/WHO or synthetic healthcare claims)
-- Predictive modeling on **hospital admissions**, **readmission risks**, or **cost prediction**
-- Focus on **feature pipeline quality**, **data validation**, **diagnostic dashboards**
-- 📊 *Focus*: **healthcare-centric data science and ML engineering**
-
----
-
 ## 🏆 Goals for This Portfolio
 ✅ Showcase **production-ready pipeline builds**  
 ✅ Focus on **clarity, modularity, and diagnostics**  
