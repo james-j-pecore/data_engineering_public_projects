@@ -1,8 +1,8 @@
-# 🏗️ Data Engineering Portfolio — 2025
+# 🏗️ Data Engineering Portfolio
 
-Welcome to my **professional data engineering portfolio**, focused on **end-to-end data pipelines**, **practical AI integrations**, and **clean, scalable project structures**.
+Welcome to my **public data engineering portfolio**, focused on **example data pipelines**, **practical AI integrations**, and **project structures**.
 
-This repository serves as my **recruiter-friendly showcase**, highlighting:
+This repository serves as a **recruiter-friendly showcase**, highlighting:
 - ✅ **Live data pipelines** across multiple industries
 - ✅ **Explainable AI/ML applications** (no black-box hype)
 - ✅ **Production-grade project layouts** — built for **modularity and clarity**
