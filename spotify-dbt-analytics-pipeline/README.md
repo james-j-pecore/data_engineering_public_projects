@@ -120,9 +120,10 @@ cd dbt_project
 dbt build --profiles-dir .
 ```
 
-**Dagster** (orchestrates raw ingestion + the full dbt build as one asset graph):
+**Dagster** (orchestrates raw ingestion + the full dbt build as one asset graph, run from the project root):
 
 ```bash
+cd ..
 dagster dev -m dagster_project.definitions
 ```
 

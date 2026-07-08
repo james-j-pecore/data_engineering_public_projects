@@ -46,4 +46,4 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
 
 ## 📬 Contact
 **James J. Pecore**  
-[LinkedIn](https://www.linkedin.com/in/james-j-p-a0a167144) | [GitHub](https://github.com/james-j-pecore)
+[LinkedIn](https://www.linkedin.com/in/james-j-pecore) | [GitHub](https://github.com/james-j-pecore)
