@@ -138,7 +138,13 @@ streamlit run analysis/streamlit_app.py
 
 ## Example output
 
-![Streamlit dashboard](images/streamlit_dashboard.png)
+![Library overview and top artists](images/streamlit_overview.png)
+
+![Playlist overlap and release-year distribution](images/streamlit_overlap_release.png)
+
+![Playlist artist diversity and singleton albums](images/streamlit_diversity_singleton.png)
+
+![Largest playlists and dominant artist per playlist](images/streamlit_largest_dominant.png)
 
 ## Analytics questions answered
 

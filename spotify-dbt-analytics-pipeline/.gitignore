@@ -12,6 +12,7 @@ dbt_project/logs/
 
 # Dagster
 dagster_project/.dagster_home/
+.tmp_dagster_home_*/
 storage/
 
 # Python
