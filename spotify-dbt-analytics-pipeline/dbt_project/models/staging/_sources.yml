@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: Raw Spotify API entities, loaded as-is (id + JSON blob) by src/load.py.
+    tables:
+      - name: profile
+        description: The authenticated user's Spotify profile (one row).
+      - name: playlists
+        description: Playlists owned or followed by the authenticated user.
+      - name: playlist_tracks
+        description: One row per (playlist, track) membership, including when it was added.
+      - name: saved_tracks
+        description: Tracks in the user's Liked Songs library.
+      - name: recently_played
+        description: The user's recently played track history.
+      - name: tracks
+        description: Deduplicated full track objects, embedded from playlists/saved/recently-played.
+      - name: albums
+        description: Deduplicated album objects, embedded from track responses.
+      - name: artists
+        description: Deduplicated artist objects, batch-fetched from GET /artists.

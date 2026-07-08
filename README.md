@@ -22,6 +22,11 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
 
 ## 📂 Projects
 
+### ✅ [Spotify / Data Build Tool Analytics Pipeline](./spotify-dbt-analytics-pipeline)
+- **Live data ingestion** (Spotify user playlist composition, artist concentration, release year trends, playlist overlap, and library structure)
+- **DBT Data Marts** (Clean and model information from each Spotify playlist)
+- 📊 *Focus*: **music data analytics with DBT and Dagster**
+
 ### ✅ [AI-Enhanced Financial Signals Pipeline](./ai-financial-signals-pipeline)
 - **Live data ingestion** (stocks, crypto, macroeconomic indicators)
 - **Alpha factor engineering** (RSI, Momentum, MACD, SMA)

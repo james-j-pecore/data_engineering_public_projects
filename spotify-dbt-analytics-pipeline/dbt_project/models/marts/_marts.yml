@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: mart_library_summary
+    description: Single-row snapshot of overall library size, listening hours, and explicit share.
+    columns:
+      - name: playlist_count
+        tests:
+          - not_null
+      - name: unique_track_count
+        tests:
+          - not_null
+
+  - name: mart_artist_concentration
+    description: One row per artist — how many tracks/playlists they appear in, and their share of the library.
+    columns:
+      - name: artist_id
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__artists')
+                field: artist_id
+      - name: track_count
+        tests:
+          - not_null
+
+  - name: mart_playlist_similarity
+    description: One row per playlist pair with any shared tracks, with a Jaccard similarity score.
+    columns:
+      - name: playlist_id_a
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__playlists')
+                field: playlist_id
+      - name: playlist_id_b
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__playlists')
+                field: playlist_id
+      - name: jaccard_similarity
+        tests:
+          - not_null
+
+  - name: mart_release_year_trends
+    description: One row per release year across the deduplicated track library.
+    columns:
+      - name: release_year
+        tests:
+          - unique
+          - not_null
+      - name: track_count
+        tests:
+          - not_null
+
+  - name: mart_playlist_profile
+    description: One row per playlist — size, artist diversity, popularity/era profile, and dominant artist.
+    columns:
+      - name: playlist_id
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__playlists')
+                field: playlist_id
+      - name: track_count
+        tests:
+          - not_null
+      - name: artist_diversity_ratio
+        tests:
+          - not_null

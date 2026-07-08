@@ -1,0 +1,14 @@
+python-dotenv
+requests
+duckdb
+
+dbt-core
+dbt-duckdb
+
+dagster
+dagster-dbt
+dagster-webserver
+
+streamlit
+pandas
+plotly

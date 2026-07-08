@@ -1,0 +1,106 @@
+version: 2
+
+models:
+  - name: stg_spotify__playlists
+    description: One row per playlist owned or followed by the authenticated user.
+    columns:
+      - name: playlist_id
+        description: Spotify playlist id.
+        tests:
+          - unique
+          - not_null
+      - name: playlist_name
+        tests:
+          - not_null
+
+  - name: stg_spotify__playlist_tracks
+    description: One row per (playlist, track) membership.
+    columns:
+      - name: playlist_track_id
+        description: Surrogate key of playlist_id + track_id + added_at.
+        tests:
+          - unique
+          - not_null
+      - name: playlist_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__playlists')
+                field: playlist_id
+      - name: track_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__tracks')
+                field: track_id
+
+  - name: stg_spotify__tracks
+    description: One row per unique track seen anywhere in the library.
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+      - name: track_name
+        tests:
+          - not_null
+      - name: album_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__albums')
+                field: album_id
+
+  - name: stg_spotify__artists
+    description: One row per unique artist appearing on any track in the library.
+    columns:
+      - name: artist_id
+        tests:
+          - unique
+          - not_null
+      - name: artist_name
+        tests:
+          - not_null
+
+  - name: stg_spotify__albums
+    description: One row per unique album appearing on any track in the library.
+    columns:
+      - name: album_id
+        tests:
+          - unique
+          - not_null
+      - name: album_name
+        tests:
+          - not_null
+
+  - name: stg_spotify__saved_tracks
+    description: One row per track in the user's Liked Songs library.
+    columns:
+      - name: saved_track_id
+        tests:
+          - unique
+          - not_null
+      - name: track_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__tracks')
+                field: track_id
+
+  - name: stg_spotify__recently_played
+    description: One row per recently played track event.
+    columns:
+      - name: recently_played_id
+        tests:
+          - unique
+          - not_null
+      - name: track_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_spotify__tracks')
+                field: track_id
