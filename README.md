@@ -35,6 +35,14 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
 - **Diagnostic visualizations**
 - 📊 *Focus*: **financial data infrastructure + explainable AI signals**
 
+### ✅ [NYC Electricity Consumption & Cost Pipeline](./nyc-electricity-consumption-pipeline)
+- **Live data ingestion** (NYC Open Data NYCHA electric bills + NYISO public grid load)
+- **DBT Data Marts** (development/borough/citywide monthly rollups, NYCHA-vs-grid comparison)
+- **Regression model suite** (Linear, Ridge, Random Forest, Gradient Boosting, XGBoost) with
+  time-based evaluation and a leaderboard
+- **AI/data-center demand context** — indexed NYCHA vs. NYC grid load comparison
+- 📊 *Focus*: **energy data infrastructure + time-series regression forecasting**
+
 ---
 
 ## 🏆 Goals for This Portfolio

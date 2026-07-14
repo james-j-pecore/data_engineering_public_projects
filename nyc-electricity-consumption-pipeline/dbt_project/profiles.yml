@@ -1,0 +1,7 @@
+nyc_electricity_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "../data/nyc_electricity.duckdb"
+      threads: 4

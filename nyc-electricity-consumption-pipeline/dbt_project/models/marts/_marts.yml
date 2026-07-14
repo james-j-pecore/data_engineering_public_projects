@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: mart_development_monthly
+    description: >
+      Development x month panel with lag/rolling consumption features — the
+      training table for the regression suite in src/models/.
+    columns:
+      - name: development_name
+        tests:
+          - not_null
+      - name: revenue_month
+        tests:
+          - not_null
+      - name: consumption_kwh
+        tests:
+          - not_null
+
+  - name: mart_borough_monthly
+    description: One row per (borough, month) with year-over-year consumption change.
+    columns:
+      - name: borough
+        tests:
+          - not_null
+      - name: revenue_month
+        tests:
+          - not_null
+
+  - name: mart_citywide_vs_grid
+    description: >
+      NYCHA-wide monthly consumption vs. NYISO NYC-zone grid load, both
+      indexed to their first available month = 100, with YoY growth rates
+      for each. Powers the AI/data-center demand comparison chart.
+    columns:
+      - name: revenue_month
+        tests:
+          - unique
+          - not_null

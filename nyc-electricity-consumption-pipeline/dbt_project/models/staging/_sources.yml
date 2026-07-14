@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: Raw source records, loaded as-is (id + JSON blob) by src/load.py.
+    tables:
+      - name: nycha_electric_bills
+        description: >
+          Monthly per-meter electric bills for NYC Housing Authority (NYCHA)
+          developments, from NYC Open Data's "Electric Consumption And Cost"
+          dataset (jr24-e7cr). Public housing only — not citywide grid load.
+      - name: nyiso_monthly_load
+        description: >
+          NYISO "N.Y.C." zone actual load, rolled up from public 5-minute
+          archives to one avg/max MW row per month. Grid-wide context series
+          for comparison against the NYCHA-only consumption trend.

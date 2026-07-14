@@ -1,0 +1,27 @@
+.env
+
+# DuckDB
+data/*.duckdb
+data/*.duckdb.wal
+
+# Trained model artifacts
+data/model_artifacts/
+
+# dbt
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+
+# Dagster
+dagster_project/.dagster_home/
+.tmp_dagster_home_*/
+storage/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store

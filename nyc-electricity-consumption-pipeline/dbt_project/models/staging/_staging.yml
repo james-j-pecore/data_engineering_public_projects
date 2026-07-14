@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_nycha__electric_bills
+    description: One row per NYCHA meter bill, typed and cast from the raw JSON blob.
+    columns:
+      - name: bill_id
+        tests:
+          - unique
+          - not_null
+      - name: development_name
+        tests:
+          - not_null
+      - name: revenue_month
+        tests:
+          - not_null
+      - name: consumption_kwh
+        tests:
+          - not_null
+
+  - name: stg_nyiso__monthly_load
+    description: One row per month of NYISO "N.Y.C." zone actual load (avg/max MW).
+    columns:
+      - name: revenue_month
+        tests:
+          - unique
+          - not_null
+      - name: avg_load_mw
+        tests:
+          - not_null

@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: int_development_monthly
+    description: One row per (development, month) — bills summed up from meter/location grain.
+    columns:
+      - name: development_name
+        tests:
+          - not_null
+      - name: revenue_month
+        tests:
+          - not_null
+      - name: consumption_kwh
+        tests:
+          - not_null
+
+  - name: int_borough_monthly
+    description: One row per (borough, month), summed from int_development_monthly.
+    columns:
+      - name: borough
+        tests:
+          - not_null
+      - name: revenue_month
+        tests:
+          - not_null
+
+  - name: int_citywide_monthly
+    description: One row per month, NYCHA-wide totals summed from int_borough_monthly.
+    columns:
+      - name: revenue_month
+        tests:
+          - unique
+          - not_null
