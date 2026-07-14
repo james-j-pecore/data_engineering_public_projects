@@ -27,6 +27,8 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
 - **DBT Data Marts** (Clean and model information from each Spotify playlist)
 - 📊 *Focus*: **music data analytics with DBT and Dagster**
 
+<img src="spotify-dbt-analytics-pipeline/images/streamlit_overview.png" alt="Spotify Library Analytics dashboard overview" width="700">
+
 ### ✅ [AI-Enhanced Financial Signals Pipeline](./ai-financial-signals-pipeline)
 - **Live data ingestion** (stocks, crypto, macroeconomic indicators)
 - **Alpha factor engineering** (RSI, Momentum, MACD, SMA)
@@ -35,6 +37,8 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
 - **Diagnostic visualizations**
 - 📊 *Focus*: **financial data infrastructure + explainable AI signals**
 
+<img src="ai-financial-signals-pipeline/images/cumulative_returns.png" alt="AI meta-signal strategy vs. buy-and-hold cumulative returns" width="700">
+
 ### ✅ [NYC Electricity Consumption & Cost Pipeline](./nyc-electricity-consumption-pipeline)
 - **Live data ingestion** (NYC Open Data NYCHA electric bills + NYISO public grid load)
 - **DBT Data Marts** (development/borough/citywide monthly rollups, NYCHA-vs-grid comparison)
@@ -42,6 +46,8 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
   time-based evaluation and a leaderboard
 - **AI/data-center demand context** — indexed NYCHA vs. NYC grid load comparison
 - 📊 *Focus*: **energy data infrastructure + time-series regression forecasting**
+
+<img src="nyc-electricity-consumption-pipeline/images/01_overview_metrics_trend.png" alt="NYC Electricity Consumption dashboard overview" width="700">
 
 ---
 
