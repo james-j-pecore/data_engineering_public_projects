@@ -6,36 +6,35 @@ Linear regression is a **supervised learning algorithm** used to predict a **con
 
 Common applications include predicting:
 
-* Salary from years of experience
-* House prices from size and location
-* Monthly sales from advertising spending
-* Delivery times from distance and order volume
-* Energy consumption from temperature and building size
+- Salary from years of experience
+- House prices from size and location
+- Monthly sales from advertising spending
+- Delivery times from distance and order volume
+- Energy consumption from temperature and building size
 
 The model represents the predicted target as a weighted sum of the input features:
 
 $$
 \hat{y}
-=======
-
+=
 \beta_0
 +
-\beta_1x_1
+\beta_1 x_1
 +
-\beta_2x_2
+\beta_2 x_2
 +
 \cdots
 +
-\beta_px_p
+\beta_p x_p
 $$
 
 Where:
 
-* $\hat{y}$ is the predicted outcome.
-* $x_1, \ldots, x_p$ are the input features.
-* $\beta_0$ is the intercept.
-* $\beta_1, \ldots, \beta_p$ are the learned coefficients.
-* $p$ is the number of features.
+- $\hat{y}$ is the predicted outcome.
+- $x_1, \ldots, x_p$ are the input features.
+- $\beta_0$ is the intercept.
+- $\beta_1, \ldots, \beta_p$ are the learned coefficients.
+- $p$ is the number of features.
 
 Ordinary least squares linear regression estimates the coefficients that minimize the sum of squared prediction errors.
 
