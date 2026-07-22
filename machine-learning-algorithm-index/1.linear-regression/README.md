@@ -4,46 +4,40 @@
 
 Linear regression is a **supervised learning algorithm** used to predict a **continuous numerical outcome**.
 
-Examples include predicting:
+Common applications include predicting:
 
 * Salary from years of experience
-* House price from size and location
-* Monthly sales from advertising expenditure
-* Delivery time from distance and order volume
+* House prices from size and location
+* Monthly sales from advertising spending
+* Delivery times from distance and order volume
+* Energy consumption from temperature and building size
 
-The model represents the target as a weighted sum of the input features:
+The model represents the predicted target as a weighted sum of the input features:
 
-[
-\hat{y}=\beta_0+\beta_1x_1+\beta_2x_2+\cdots+\beta_px_p
-]
+$$
+\hat{y}
+=======
 
-Markdown:
+\beta_0
++
+\beta_1x_1
++
+\beta_2x_2
++
+\cdots
++
+\beta_px_p
+$$
 
-```markdown
-\[
-\hat{y}=\beta_0+\beta_1x_1+\beta_2x_2+\cdots+\beta_px_p
-\]
-```
+Where:
 
-Here:
+* $\hat{y}$ is the predicted outcome.
+* $x_1, \ldots, x_p$ are the input features.
+* $\beta_0$ is the intercept.
+* $\beta_1, \ldots, \beta_p$ are the learned coefficients.
+* $p$ is the number of features.
 
-* (\hat{y}) is the predicted outcome.
-* (x_1,\ldots,x_p) are the input features.
-* (\beta_0) is the intercept.
-* (\beta_1,\ldots,\beta_p) are the learned coefficients.
-* (p) is the number of features.
-
-Inline Markdown:
-
-```markdown
-- \(\hat{y}\) is the predicted outcome.
-- \(x_1,\ldots,x_p\) are the input features.
-- \(\beta_0\) is the intercept.
-- \(\beta_1,\ldots,\beta_p\) are the learned coefficients.
-- \(p\) is the number of features.
-```
-
-Standard ordinary least squares linear regression chooses the coefficients that minimize the sum of squared prediction errors.
+Ordinary least squares linear regression estimates the coefficients that minimize the sum of squared prediction errors.
 
 ---
 
@@ -51,132 +45,89 @@ Standard ordinary least squares linear regression chooses the coefficients that 
 
 Imagine plotting employee salaries against years of experience.
 
-The points will probably not form a perfect line, but they may show an upward pattern. Linear regression attempts to draw the straight line that best summarizes that relationship.
+The observations will probably not form a perfect line, but they may show an upward trend. Linear regression attempts to find the straight line that best summarizes this relationship.
 
-For one feature, the model is:
+For a model with one input feature:
 
-[
-\hat{y}=\beta_0+\beta_1x
-]
+$$
+\hat{y}
+=======
 
-Markdown:
+\beta_0
++
+\beta_1x
+$$
 
-```markdown
-\[
-\hat{y}=\beta_0+\beta_1x
-\]
-```
+Suppose the fitted salary model is:
 
-Suppose the fitted model is:
-
-[
+$$
 \widehat{\text{Salary}}
 =======================
 
 45{,}000
 +
-4{,}000(\text{Years of Experience})
-]
+4{,}000
+\times
+\text{Years of Experience}
+$$
 
-Markdown:
+The coefficients can be interpreted as follows:
 
-```markdown
-\[
-\widehat{\text{Salary}}
-=
-45{,}000
-+
-4{,}000(\text{Years of Experience})
-\]
-```
+* **Intercept:** $\beta_0 = 45{,}000$
+* **Slope:** $\beta_1 = 4{,}000$
 
-Interpretation:
+The model predicts a salary of **$45,000** for someone with zero years of experience.
 
-* **Intercept:** (\beta_0=45{,}000)
-* **Slope:** (\beta_1=4{,}000)
+Each additional year of experience is associated with a predicted **$4,000 increase in salary**.
 
-Inline Markdown:
-
-```markdown
-- **Intercept:** \(\beta_0=45{,}000\)
-- **Slope:** \(\beta_1=4{,}000\)
-```
-
-The model predicts a salary of $45,000 for someone with zero years of experience.
-
-Each additional year of experience is associated with a predicted $4,000 increase in salary.
-
-The word **associated** matters. A regression coefficient does not automatically establish causation.
+The word **associated** is important. A regression coefficient describes a relationship in the data, but it does not automatically establish causation.
 
 ### Residuals
 
-For each observation, the residual is:
+A residual is the difference between an observed value and the model's prediction.
 
-[
-e_i=y_i-\hat{y}_i
-]
+$$
+e_i
+===
 
-Markdown:
+## y_i
 
-```markdown
-\[
-e_i=y_i-\hat{y}_i
-\]
-```
+\hat{y}_i
+$$
 
-Here:
+Where:
 
-* (y_i) is the actual observed value.
-* (\hat{y}_i) is the predicted value.
-* (e_i) is the residual.
-* (i) identifies the observation.
+* $y_i$ is the actual value for observation $i$.
+* $\hat{y}_i$ is the predicted value.
+* $e_i$ is the residual.
 
-Inline Markdown:
+A positive residual means:
 
-```markdown
-- \(y_i\) is the actual observed value.
-- \(\hat{y}_i\) is the predicted value.
-- \(e_i\) is the residual.
-- \(i\) identifies the observation.
-```
+$$
+y_i > \hat{y}_i
+$$
 
-A positive residual means the model predicted too low:
+The model predicted too low.
 
-[
-y_i>\hat{y}_i
-]
+A negative residual means:
 
-Markdown:
+$$
+y_i < \hat{y}_i
+$$
 
-```markdown
-\[
-y_i>\hat{y}_i
-\]
-```
+The model predicted too high.
 
-A negative residual means the model predicted too high:
-
-[
-y_i<\hat{y}_i
-]
-
-Markdown:
-
-```markdown
-\[
-y_i<\hat{y}_i
-\]
-```
+A residual of zero means the prediction exactly matches the observed value.
 
 ---
 
-## Mathematical formulation
+## Mathematical Formulation
 
-### Model for one observation
+### Model for One Observation
 
-For observation (i), a multiple linear regression model is:
+For observation $i$, a multiple linear regression model is:
 
-[
+$$
 y_i
 ===
 
@@ -191,39 +142,18 @@ y_i
 \beta_px_{ip}
 +
 \epsilon_i
-]
+$$
 
-Markdown:
+Where:
 
-```markdown
-\[
-y_i
-=
-\beta_0
-+
-\beta_1x_{i1}
-+
-\beta_2x_{i2}
-+
-\cdots
-+
-\beta_px_{ip}
-+
-\epsilon_i
-\]
-```
+* $y_i$ is the observed target value.
+* $x_{ij}$ is the value of feature $j$ for observation $i$.
+* $\beta_j$ is the coefficient for feature $j$.
+* $\epsilon_i$ is the unexplained error.
 
-The error term (\epsilon_i) represents variation that the included features do not explain.
+The corresponding predicted value is:
 
-Inline Markdown:
-
-```markdown
-The error term \(\epsilon_i\) represents variation that the included features do not explain.
-```
-
-The corresponding predicted value excludes the unknown error term:
-
-[
+$$
 \hat{y}_i
 =========
 
@@ -236,327 +166,193 @@ The corresponding predicted value excludes the unknown error term:
 \cdots
 +
 \hat{\beta}*px*{ip}
-]
+$$
 
-Markdown:
+The hats indicate estimated values.
 
-```markdown
-\[
-\hat{y}_i
-=
-\hat{\beta}_0
-+
-\hat{\beta}_1x_{i1}
-+
-\hat{\beta}_2x_{i2}
-+
-\cdots
-+
-\hat{\beta}_px_{ip}
-\]
-```
+For example:
 
-The hats indicate estimated quantities:
+$$
+\hat{\beta}_j
+=============
 
-[
-\hat{\beta}_j=\text{estimated value of }\beta_j
-]
+\text{estimated value of }
+\beta_j
+$$
 
-Markdown:
+The prediction excludes the unknown error term because the model cannot directly observe $\epsilon_i$.
 
-```markdown
-\[
-\hat{\beta}_j=\text{estimated value of }\beta_j
-\]
-```
+### Matrix Form
 
-### Matrix formulation
+The complete regression model can be written as:
 
-The complete model can be written in matrix form:
-
-[
+$$
 \mathbf{y}
 ==========
 
 \mathbf{X}\boldsymbol{\beta}
 +
 \boldsymbol{\epsilon}
-]
+$$
 
-Markdown:
+Where:
 
-```markdown
-\[
-\mathbf{y}
-=
-\mathbf{X}\boldsymbol{\beta}
-+
-\boldsymbol{\epsilon}
-\]
-```
-
-Here:
-
-* (\mathbf{y}) is the vector of observed target values.
-* (\mathbf{X}) is the feature matrix.
-* (\boldsymbol{\beta}) is the vector of model coefficients.
-* (\boldsymbol{\epsilon}) is the vector of error terms.
-
-Inline Markdown:
-
-```markdown
-- \(\mathbf{y}\) is the vector of observed target values.
-- \(\mathbf{X}\) is the feature matrix.
-- \(\boldsymbol{\beta}\) is the vector of model coefficients.
-- \(\boldsymbol{\epsilon}\) is the vector of error terms.
-```
+* $\mathbf{y}$ is the vector of observed target values.
+* $\mathbf{X}$ is the feature matrix.
+* $\boldsymbol{\beta}$ is the vector of coefficients.
+* $\boldsymbol{\epsilon}$ is the vector of errors.
 
 The predicted target vector is:
 
-[
+$$
 \hat{\mathbf{y}}
 ================
 
 \mathbf{X}\hat{\boldsymbol{\beta}}
-]
-
-Markdown:
-
-```markdown
-\[
-\hat{\mathbf{y}}
-=
-\mathbf{X}\hat{\boldsymbol{\beta}}
-\]
-```
+$$
 
 The residual vector is:
 
-[
+$$
 \mathbf{e}
 ==========
 
 ## \mathbf{y}
 
 \hat{\mathbf{y}}
-]
+$$
 
-Markdown:
+### Ordinary Least Squares Objective
 
-```markdown
-\[
-\mathbf{e}
-=
-\mathbf{y}
--
-\hat{\mathbf{y}}
-\]
-```
+Ordinary least squares, or OLS, chooses the coefficients that minimize the **residual sum of squares**.
 
-### Objective function
-
-Ordinary least squares minimizes the **residual sum of squares**, or RSS:
-
-[
+$$
 RSS
 ===
 
 \sum_{i=1}^{n}
-\left(y_i-\hat{y}_i\right)^2
-]
+\left(
+y_i
+---
 
-Markdown:
+\hat{y}_i
+\right)^2
+$$
 
-```markdown
-\[
-RSS
-=
-\sum_{i=1}^{n}
-\left(y_i-\hat{y}_i\right)^2
-\]
-```
+Because:
 
-Because the residual is (e_i=y_i-\hat{y}_i), RSS can also be written as:
+$$
+e_i
+===
 
-[
+## y_i
+
+\hat{y}_i
+$$
+
+RSS can also be written as:
+
+$$
 RSS
 ===
 
-\sum_{i=1}^{n}e_i^2
-]
+\sum_{i=1}^{n}
+e_i^2
+$$
 
-Markdown:
+The optimization problem is:
 
-```markdown
-\[
-RSS
-=
-\sum_{i=1}^{n}e_i^2
-\]
-```
-
-The coefficient-estimation problem is:
-
-[
+$$
 \hat{\boldsymbol{\beta}}
 ========================
 
 \arg\min_{\boldsymbol{\beta}}
 \sum_{i=1}^{n}
 \left(
-y_i-\mathbf{x}_i^{T}\boldsymbol{\beta}
+y_i
+---
+
+\mathbf{x}_i^T\boldsymbol{\beta}
 \right)^2
-]
+$$
 
-Markdown:
+Using matrix notation:
 
-```markdown
-\[
-\hat{\boldsymbol{\beta}}
-=
-\arg\min_{\boldsymbol{\beta}}
-\sum_{i=1}^{n}
-\left(
-y_i-\mathbf{x}_i^{T}\boldsymbol{\beta}
-\right)^2
-\]
-```
-
-It can also be written using vector notation:
-
-[
+$$
 \hat{\boldsymbol{\beta}}
 ========================
 
 \arg\min_{\boldsymbol{\beta}}
 \left|
-\mathbf{y}-\mathbf{X}\boldsymbol{\beta}
+\mathbf{y}
+----------
+
+\mathbf{X}\boldsymbol{\beta}
 \right|_2^2
-]
+$$
 
-Markdown:
+The notation $\arg\min$ means the parameter values that produce the minimum value of the objective function.
 
-```markdown
-\[
-\hat{\boldsymbol{\beta}}
-=
-\arg\min_{\boldsymbol{\beta}}
-\left\|
-\mathbf{y}-\mathbf{X}\boldsymbol{\beta}
-\right\|_2^2
-\]
-```
+The notation $|\cdot|_2^2$ represents the squared Euclidean norm.
 
-Here, (\arg\min) means “the argument or parameter values that produce the minimum.”
+### Why Square the Errors?
 
-Inline Markdown:
+Squaring the errors has several useful effects:
 
-```markdown
-Here, \(\arg\min\) means “the argument or parameter values that produce the minimum.”
-```
-
-The notation (|\cdot|_2^2) represents the squared Euclidean norm.
-
-Inline Markdown:
-
-```markdown
-The notation \(\|\cdot\|_2^2\) represents the squared Euclidean norm.
-```
-
-### Why square the errors?
-
-Squaring the errors:
-
-1. Prevents positive and negative residuals from canceling.
-2. Penalizes large residuals more heavily than small residuals.
-3. Produces a differentiable and computationally convenient objective function.
+* Positive and negative residuals cannot cancel each other out.
+* Large residuals receive greater penalties than small residuals.
+* The objective function is smooth and mathematically convenient to optimize.
 
 For example:
 
-[
-(-5)^2=25
-]
+$$
+(-5)^2
+======
 
-Markdown:
+25
+$$
 
-```markdown
-\[
-(-5)^2=25
-\]
-```
+While:
 
-and:
+$$
+2^2
+===
 
-[
-(2)^2=4
-]
+4
+$$
 
-Markdown:
+An error with magnitude $5$ therefore contributes much more to the loss than an error with magnitude $2$.
 
-```markdown
-\[
-(2)^2=4
-\]
-```
+### Closed-Form Solution
 
-Thus, an error with magnitude five receives much more weight than an error with magnitude two.
+Under suitable mathematical conditions, the OLS coefficient estimate can be written as:
 
-### Closed-form solution
-
-Under appropriate mathematical conditions, the ordinary least squares estimate is:
-
-[
+$$
 \hat{\boldsymbol{\beta}}
 ========================
 
 \left(
-\mathbf{X}^{T}\mathbf{X}
+\mathbf{X}^T\mathbf{X}
 \right)^{-1}
-\mathbf{X}^{T}\mathbf{y}
-]
+\mathbf{X}^T\mathbf{y}
+$$
 
-Markdown:
+Where:
 
-```markdown
-\[
-\hat{\boldsymbol{\beta}}
-=
-\left(
-\mathbf{X}^{T}\mathbf{X}
-\right)^{-1}
-\mathbf{X}^{T}\mathbf{y}
-\]
-```
+* $\mathbf{X}^T$ is the transpose of $\mathbf{X}$.
+* $(\mathbf{X}^T\mathbf{X})^{-1}$ is the inverse of $\mathbf{X}^T\mathbf{X}$.
 
-Here:
+This formula requires $\mathbf{X}^T\mathbf{X}$ to be invertible.
 
-* (\mathbf{X}^{T}) is the transpose of (\mathbf{X}).
-* ((\mathbf{X}^{T}\mathbf{X})^{-1}) is the inverse of the matrix (\mathbf{X}^{T}\mathbf{X}).
+In practice, machine-learning libraries typically use more numerically stable methods, such as QR decomposition or singular value decomposition, rather than directly calculating the inverse.
 
-Inline Markdown:
+### Expected Value Interpretation
 
-```markdown
-- \(\mathbf{X}^{T}\) is the transpose of \(\mathbf{X}\).
-- \((\mathbf{X}^{T}\mathbf{X})^{-1}\) is the inverse of the matrix \(\mathbf{X}^{T}\mathbf{X}\).
-```
+Linear regression models the conditional expected value of the target:
 
-This formula requires (\mathbf{X}^{T}\mathbf{X}) to be invertible.
-
-Inline Markdown:
-
-```markdown
-This formula requires \(\mathbf{X}^{T}\mathbf{X}\) to be invertible.
-```
-
-In practice, numerical libraries generally use more stable methods such as QR decomposition or singular value decomposition rather than directly calculating the inverse.
-
-### Expected value interpretation
-
-A linear regression model describes the conditional expected value of the target:
-
-[
-\mathbb{E}[Y\mid X]
-===================
+$$
+\mathbb{E}[Y \mid X]
+====================
 
 \beta_0
 +
@@ -565,246 +361,173 @@ A linear regression model describes the conditional expected value of the target
 \cdots
 +
 \beta_pX_p
-]
+$$
 
-Markdown:
+The expression $\mathbb{E}[Y \mid X]$ means the expected value of $Y$ given the observed features $X$.
 
-```markdown
-\[
-\mathbb{E}[Y\mid X]
-=
-\beta_0
-+
-\beta_1X_1
-+
-\cdots
-+
-\beta_pX_p
-\]
-```
+### Coefficient Interpretation
 
-The expression (\mathbb{E}[Y\mid X]) means the expected value of (Y), conditional on the observed features (X).
+For feature $x_j$, the corresponding coefficient is $\beta_j$.
 
-Inline Markdown:
+Holding the other included features constant:
 
-```markdown
-The expression \(\mathbb{E}[Y\mid X]\) means the expected value of \(Y\), conditional on the observed features \(X\).
-```
-
-### Coefficient interpretation
-
-For feature (x_j), its coefficient is (\beta_j).
-
-Inline Markdown:
-
-```markdown
-For feature \(x_j\), its coefficient is \(\beta_j\).
-```
-
-Holding all other included features constant, a one-unit increase in (x_j) changes the predicted target by (\beta_j):
-
-[
+$$
 \Delta\hat{y}
 =============
 
 \beta_j\Delta x_j
-]
+$$
 
-Markdown:
+For a one-unit increase in the feature:
 
-```markdown
-\[
-\Delta\hat{y}
-=
-\beta_j\Delta x_j
-\]
-```
+$$
+\Delta x_j
+==========
 
-When the feature increases by one unit:
-
-[
-\Delta x_j=1
-]
-
-Markdown:
-
-```markdown
-\[
-\Delta x_j=1
-\]
-```
+1
+$$
 
 Therefore:
 
-[
-\Delta\hat{y}=\beta_j
-]
+$$
+\Delta\hat{y}
+=============
 
-Markdown:
+\beta_j
+$$
 
-```markdown
-\[
-\Delta\hat{y}=\beta_j
-\]
-```
-
-### Common assumptions for statistical inference
-
-#### Linearity
-
-The expected outcome is linear in the model coefficients:
-
-[
-\mathbb{E}[Y\mid X]
-===================
-
-\mathbf{X}\boldsymbol{\beta}
-]
-
-Markdown:
-
-```markdown
-\[
-\mathbb{E}[Y\mid X]
-=
-\mathbf{X}\boldsymbol{\beta}
-\]
-```
-
-#### Zero conditional mean
-
-The errors should have an expected value of zero after conditioning on the features:
-
-[
-\mathbb{E}[\epsilon\mid X]=0
-]
-
-Markdown:
-
-```markdown
-\[
-\mathbb{E}[\epsilon\mid X]=0
-\]
-```
-
-This means the model should not systematically overpredict or underpredict for particular feature values.
-
-#### Independence
-
-Errors should not be correlated across observations:
-
-[
-\operatorname{Cov}(\epsilon_i,\epsilon_j)=0
-\qquad
-\text{for }i\neq j
-]
-
-Markdown:
-
-```markdown
-\[
-\operatorname{Cov}(\epsilon_i,\epsilon_j)=0
-\qquad
-\text{for }i\neq j
-\]
-```
-
-#### Homoscedasticity
-
-The residual variance should be approximately constant across feature values:
-
-[
-\operatorname{Var}(\epsilon_i\mid X)
-====================================
-
-\sigma^2
-]
-
-Markdown:
-
-```markdown
-\[
-\operatorname{Var}(\epsilon_i\mid X)
-=
-\sigma^2
-\]
-```
-
-Here, (\sigma^2) is the error variance.
-
-Inline Markdown:
-
-```markdown
-Here, \(\sigma^2\) is the error variance.
-```
-
-If the residual variance changes systematically, the data exhibits **heteroscedasticity**:
-
-[
-\operatorname{Var}(\epsilon_i\mid X)
-\neq
-\sigma^2
-]
-
-Markdown:
-
-```markdown
-\[
-\operatorname{Var}(\epsilon_i\mid X)
-\neq
-\sigma^2
-\]
-```
-
-#### No perfect multicollinearity
-
-No feature should be an exact linear combination of the other features.
-
-For example, perfect multicollinearity would exist if:
-
-[
-x_3=2x_1+5x_2
-]
-
-Markdown:
-
-```markdown
-\[
-x_3=2x_1+5x_2
-\]
-```
-
-#### Normally distributed errors
-
-For classical small-sample hypothesis tests and confidence intervals, errors are often assumed to follow a normal distribution:
-
-[
-\epsilon_i
-\sim
-\mathcal{N}(0,\sigma^2)
-]
-
-Markdown:
-
-```markdown
-\[
-\epsilon_i
-\sim
-\mathcal{N}(0,\sigma^2)
-\]
-```
-
-Normality is not strictly required merely to fit an ordinary least squares model.
+This means that a one-unit increase in $x_j$ is associated with a predicted change of $\beta_j$ units in the target, assuming the other included features remain constant.
 
 ---
 
-## Typical hyperparameters
+## Assumptions
 
-Ordinary least squares has relatively few true hyperparameters. Most of its behavior comes from the data, feature engineering, and preprocessing choices.
+The assumptions of linear regression are especially important when using the model for statistical inference, confidence intervals, or hypothesis tests.
+
+### Linearity
+
+The expected target should be representable as a linear combination of the model coefficients.
+
+$$
+\mathbb{E}[Y \mid X]
+====================
+
+\mathbf{X}\boldsymbol{\beta}
+$$
+
+Linear regression is linear in its coefficients, though the input features may include transformations such as $x^2$ or $\log(x)$.
+
+### Zero Conditional Mean
+
+The errors should have an expected value of zero after conditioning on the features.
+
+$$
+\mathbb{E}[\epsilon \mid X]
+===========================
+
+0
+$$
+
+This means the model should not systematically overpredict or underpredict for particular feature values.
+
+Violations often indicate:
+
+* Missing important variables
+* Incorrect functional form
+* Selection bias
+* Endogeneity
+* Measurement problems
+
+### Independence
+
+Errors should not be correlated across observations.
+
+$$
+\operatorname{Cov}(\epsilon_i, \epsilon_j)
+==========================================
+
+0
+\qquad
+\text{for }
+i \neq j
+$$
+
+This assumption may be violated in:
+
+* Time-series data
+* Repeated measurements
+* Geographic data
+* Clustered observations
+* Panel data
+
+### Homoscedasticity
+
+The conditional variance of the errors should be approximately constant.
+
+$$
+\operatorname{Var}(\epsilon_i \mid X)
+=====================================
+
+\sigma^2
+$$
+
+Where $\sigma^2$ is the error variance.
+
+If the residual variance changes across feature values, the errors are heteroscedastic.
+
+$$
+\operatorname{Var}(\epsilon_i \mid X)
+\neq
+\sigma^2
+$$
+
+Heteroscedasticity may make standard errors and statistical tests unreliable, even when the coefficient estimates remain useful.
+
+### No Perfect Multicollinearity
+
+No predictor should be an exact linear combination of the other predictors.
+
+For example, perfect multicollinearity exists if:
+
+$$
+x_3
+===
+
+2x_1
++
+5x_2
+$$
+
+Strong but imperfect multicollinearity can also make coefficient estimates unstable.
+
+### Normality of Errors
+
+For classical small-sample confidence intervals and hypothesis tests, errors are often assumed to follow a normal distribution.
+
+$$
+\epsilon_i
+\sim
+\mathcal{N}(0,\sigma^2)
+$$
+
+Normality is not strictly required simply to fit an OLS model.
+
+It matters more for:
+
+* Small-sample statistical inference
+* Confidence intervals
+* Hypothesis tests
+* Prediction intervals
+
+---
+
+## Typical Hyperparameters
+
+Ordinary least squares has relatively few true hyperparameters. Most performance differences come from feature selection, preprocessing, and model design.
 
 ### `fit_intercept`
 
-Determines whether the model learns an intercept.
+Controls whether the model estimates an intercept.
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -812,63 +535,51 @@ from sklearn.linear_model import LinearRegression
 model = LinearRegression(fit_intercept=True)
 ```
 
-Usually leave this as `True`.
+The default is usually appropriate.
 
-Set it to `False` only when:
+Set `fit_intercept=False` only when:
 
-* The data has already been centered appropriately.
-* Theoretical knowledge requires the regression line to pass through zero.
+* The features and target have already been centered.
+* Domain knowledge requires the model to pass through the origin.
+* An intercept has already been included manually.
 
-When the intercept is disabled, the model becomes:
+Without an intercept, the model becomes:
 
-[
+$$
 \hat{y}
 =======
 
-\beta_1x_1+\cdots+\beta_px_p
-]
-
-Markdown:
-
-```markdown
-\[
-\hat{y}
-=
-\beta_1x_1+\cdots+\beta_px_p
-\]
-```
+\beta_1x_1
++
+\cdots
++
+\beta_px_p
+$$
 
 ### `positive`
 
-Restricts the learned coefficients to nonnegative values:
+Restricts all coefficients to nonnegative values.
 
-[
-\beta_j\geq 0
+$$
+\beta_j
+\geq
+0
 \qquad
-\text{for every }j
-]
-
-Markdown:
-
-```markdown
-\[
-\beta_j\geq 0
-\qquad
-\text{for every }j
-\]
-```
-
-Python:
+\text{for every }
+j
+$$
 
 ```python
 model = LinearRegression(positive=True)
 ```
 
-This can be useful when negative effects would be impossible according to the problem definition.
+This may be useful when negative coefficients would contradict known constraints.
+
+For example, a production model might require all resource inputs to have nonnegative estimated effects.
 
 ### `n_jobs`
 
-Controls parallel computation for certain supported fitting cases.
+Controls parallel computation for supported fitting cases.
 
 ```python
 model = LinearRegression(n_jobs=-1)
@@ -876,7 +587,7 @@ model = LinearRegression(n_jobs=-1)
 
 A value of `-1` generally means to use all available processors.
 
-This affects computation rather than the statistical form of the fitted model.
+This parameter affects computational performance rather than the statistical form of the model.
 
 ### `tol`
 
@@ -886,27 +597,32 @@ Controls numerical convergence tolerance for certain sparse-data calculations.
 model = LinearRegression(tol=1e-6)
 ```
 
-This is primarily a computational setting rather than a modeling decision.
+This is mainly a computational parameter.
 
-### Important modeling choices
+### Important Modeling Choices
 
-Although they are not constructor hyperparameters, these choices often affect performance more strongly:
+These choices often matter more than the model's explicit hyperparameters:
 
-* Which features to include
-* Whether to remove irrelevant features
-* How to encode categorical variables
-* Whether to include interaction terms
-* Whether to include polynomial terms
-* How to handle missing values
-* How to treat outliers
+* Which predictors to include
+* How to encode categorical features
 * Whether to transform skewed variables
+* Whether to include polynomial terms
+* Whether to include interaction terms
+* How to handle missing values
+* How to handle outliers
+* Whether to standardize features
 * Whether to use regularization
+* How to divide training and test data
 
-### Interaction terms
+---
 
-An interaction model might include:
+## Feature Engineering
 
-[
+### Interaction Terms
+
+An interaction allows the effect of one feature to depend on another feature.
+
+$$
 \hat{y}
 =======
 
@@ -917,37 +633,17 @@ An interaction model might include:
 \beta_2x_2
 +
 \beta_3x_1x_2
-]
+$$
 
-Markdown:
+The interaction coefficient $\beta_3$ changes how $x_1$ and $x_2$ work together.
 
-```markdown
-\[
-\hat{y}
-=
-\beta_0
-+
-\beta_1x_1
-+
-\beta_2x_2
-+
-\beta_3x_1x_2
-\]
-```
+For example, the effect of advertising spending may depend on the size of the target market.
 
-The interaction coefficient (\beta_3) allows the effect of (x_1) to depend on the value of (x_2).
+### Polynomial Terms
 
-Inline Markdown:
+A quadratic model can be written as:
 
-```markdown
-The interaction coefficient \(\beta_3\) allows the effect of \(x_1\) to depend on the value of \(x_2\).
-```
-
-### Polynomial terms
-
-A quadratic regression model might be:
-
-[
+$$
 \hat{y}
 =======
 
@@ -956,551 +652,530 @@ A quadratic regression model might be:
 \beta_1x
 +
 \beta_2x^2
-]
+$$
 
-Markdown:
+Although the relationship is curved with respect to $x$, it is still a linear model because it is linear in the coefficients $\beta_0$, $\beta_1$, and $\beta_2$.
 
-```markdown
-\[
+A cubic model might be:
+
+$$
 \hat{y}
-=
+=======
+
 \beta_0
 +
 \beta_1x
 +
 \beta_2x^2
-\]
-```
++
+\beta_3x^3
+$$
 
-Although this relationship is curved with respect to (x), it is still considered a linear model because it is linear in the coefficients (\beta_0,\beta_1,\beta_2).
+Polynomial features can model nonlinear patterns, but high-degree polynomials can overfit and behave unpredictably outside the training range.
 
-Inline Markdown:
+### Log Transformations
 
-```markdown
-Although this relationship is curved with respect to \(x\), it is still considered a linear model because it is linear in the coefficients \(\beta_0,\beta_1,\beta_2\).
-```
+A feature can be log-transformed:
 
-### Regularized alternatives
+$$
+\hat{y}
+=======
 
-#### Ridge regression
+\beta_0
++
+\beta_1\log(x)
+$$
 
-Ridge regression adds an (L_2) penalty:
+A target can also be log-transformed:
 
-[
+$$
+\log(\hat{y})
+=============
+
+\beta_0
++
+\beta_1x
+$$
+
+Log transformations may help with:
+
+* Right-skewed variables
+* Multiplicative relationships
+* Percentage-based interpretation
+* Nonconstant residual variance
+
+---
+
+## Regularized Alternatives
+
+Regularization adds a penalty to the regression objective to reduce model complexity and coefficient instability.
+
+### Ridge Regression
+
+Ridge regression adds an $L_2$ penalty.
+
+$$
 \hat{\boldsymbol{\beta}}
 ========================
 
 \arg\min_{\boldsymbol{\beta}}
 \left[
 \sum_{i=1}^{n}
-\left(y_i-\hat{y}*i\right)^2
+\left(
+y_i
+---
+
+\hat{y}*i
+\right)^2
 +
 \lambda
-\sum*{j=1}^{p}\beta_j^2
+\sum*{j=1}^{p}
+\beta_j^2
 \right]
-]
+$$
 
-Markdown:
+The parameter $\lambda$ controls the strength of regularization.
 
-```markdown
-\[
-\hat{\boldsymbol{\beta}}
-=
-\arg\min_{\boldsymbol{\beta}}
-\left[
-\sum_{i=1}^{n}
-\left(y_i-\hat{y}_i\right)^2
-+
-\lambda
-\sum_{j=1}^{p}\beta_j^2
-\right]
-\]
-```
+A larger $\lambda$ shrinks the coefficients more strongly toward zero.
 
-#### Lasso regression
+Ridge regression is useful when:
 
-Lasso regression adds an (L_1) penalty:
+* Predictors are highly correlated
+* There are many features
+* Coefficient stability matters
+* Some bias is acceptable in exchange for lower variance
 
-[
+### Lasso Regression
+
+Lasso regression adds an $L_1$ penalty.
+
+$$
 \hat{\boldsymbol{\beta}}
 ========================
 
 \arg\min_{\boldsymbol{\beta}}
 \left[
 \sum_{i=1}^{n}
-\left(y_i-\hat{y}*i\right)^2
+\left(
+y_i
+---
+
+\hat{y}*i
+\right)^2
 +
 \lambda
 \sum*{j=1}^{p}
 |\beta_j|
 \right]
-]
+$$
 
-Markdown:
+Lasso can reduce some coefficients exactly to zero.
 
-```markdown
-\[
+This makes it useful for:
+
+* Feature selection
+* Sparse models
+* High-dimensional datasets
+* Improving interpretability
+
+### Elastic Net
+
+Elastic Net combines $L_1$ and $L_2$ penalties.
+
+$$
 \hat{\boldsymbol{\beta}}
-=
+========================
+
 \arg\min_{\boldsymbol{\beta}}
 \left[
 \sum_{i=1}^{n}
-\left(y_i-\hat{y}_i\right)^2
+\left(
+y_i
+---
+
+\hat{y}*i
+\right)^2
 +
-\lambda
-\sum_{j=1}^{p}
+\lambda_1
+\sum*{j=1}^{p}
 |\beta_j|
++
+\lambda_2
+\sum_{j=1}^{p}
+\beta_j^2
 \right]
-\]
-```
+$$
 
-Here, (\lambda) controls the strength of regularization.
-
-Inline Markdown:
-
-```markdown
-Here, \(\lambda\) controls the strength of regularization.
-```
+Elastic Net can be useful when predictors are numerous and strongly correlated.
 
 ---
 
 ## Advantages
 
-### Easy to interpret
+### Interpretability
 
-Each coefficient describes the expected change in the prediction associated with a one-unit change in that feature, holding the other included features constant.
+Linear regression coefficients have relatively direct interpretations.
 
-### Fast to train
+Each coefficient estimates the predicted change in the target associated with a one-unit increase in the corresponding feature, holding other included features constant.
 
-Linear regression is computationally inexpensive compared with many nonlinear machine-learning algorithms.
+### Fast Training
 
-### Strong baseline
+Linear regression is computationally efficient compared with many nonlinear algorithms.
 
-It provides a useful benchmark before trying more complicated models.
+It works well as an initial baseline.
 
-If a complex model barely outperforms linear regression, the extra complexity may not be justified.
+### Strong Benchmark
 
-### Works well for linear relationships
+A linear model gives a useful performance reference before trying more complex algorithms.
 
-When the relationship is approximately linear and the data is reasonably clean, linear regression can perform well.
+If a complex model only slightly outperforms linear regression, the additional complexity may not be justified.
 
-### Supports statistical inference
+### Effective for Linear Relationships
+
+When the underlying relationship is approximately linear, linear regression can perform very well.
+
+### Supports Statistical Inference
 
 Traditional regression analysis can provide:
 
+* Standard errors
 * Confidence intervals
 * Hypothesis tests
-* Standard errors
+* Prediction intervals
 * Measures of coefficient uncertainty
 
-A typical coefficient hypothesis test is:
+A common hypothesis test for coefficient $\beta_j$ is:
 
-[
-H_0:\beta_j=0
-]
+$$
+H_0
+:
+\beta_j
+=======
 
-[
-H_1:\beta_j\neq 0
-]
+0
+$$
 
-Markdown:
+$$
+H_1
+:
+\beta_j
+\neq
+0
+$$
 
-```markdown
-\[
-H_0:\beta_j=0
-\]
+The null hypothesis states that the feature has no linear association with the target after controlling for the other included predictors.
 
-\[
-H_1:\beta_j\neq 0
-\]
-```
+### Can Extrapolate
 
-The null hypothesis states that feature (j) has no linear association with the target after accounting for the other included features.
+Linear regression can produce predictions outside the range observed in the training data.
 
-### Can extrapolate
+This is different from many tree-based models, which generally predict combinations of observed target values.
 
-Unlike many tree-based models, linear regression can produce predictions outside the range of the observed target values.
+Extrapolation can be useful, but it can also be dangerous when the relationship does not continue beyond the observed range.
 
-This may be useful, but it can also produce unrealistic results.
+### Works with Large Datasets
+
+Linear regression can scale efficiently to large datasets, particularly when the number of features is moderate.
 
 ---
 
 ## Limitations
 
-### Assumes a restrictive functional form
+### Restrictive Functional Form
 
-A basic model assumes that each feature has a constant linear effect.
+Basic linear regression assumes a constant linear relationship.
 
-For example:
+$$
+\hat{y}
+=======
 
-[
-\hat{y}=\beta_0+\beta_1x
-]
+\beta_0
++
+\beta_1x
+$$
 
-Markdown:
+This assumes that every one-unit increase in $x$ has the same predicted effect, regardless of the original value of $x$.
 
-```markdown
-\[
-\hat{y}=\beta_0+\beta_1x
-\]
-```
-
-This assumes that increasing (x) by one unit has the same predicted effect at every value of (x).
-
-Real relationships may instead have:
+Real relationships may instead contain:
 
 * Curves
 * Thresholds
-* Saturation points
+* Saturation
 * Interactions
 * Discontinuities
+* Seasonal patterns
 
-### Sensitive to outliers
+### Sensitivity to Outliers
 
-Because errors are squared, observations with large residuals can have substantial influence on the fitted coefficients.
+Because OLS squares each residual, observations with large errors receive substantial weight.
 
 For example:
 
-[
-10^2=100
-]
+$$
+10^2
+====
 
-Markdown:
+100
+$$
 
-```markdown
-\[
-10^2=100
-\]
-```
+While:
 
-while:
+$$
+2^2
+===
 
-[
-2^2=4
-]
+4
+$$
 
-Markdown:
+The error of $10$ contributes 25 times as much to the loss:
 
-```markdown
-\[
-2^2=4
-\]
-```
-
-An error of 10 therefore contributes 25 times as much to the loss as an error of 2:
-
-[
+$$
 \frac{10^2}{2^2}
 ================
 
 # \frac{100}{4}
 
 25
-]
+$$
 
-Markdown:
+A small number of extreme observations can significantly shift the fitted line.
 
-```markdown
-\[
-\frac{10^2}{2^2}
-=
-\frac{100}{4}
-=
-25
-\]
-```
+### Multicollinearity
 
-### Multicollinearity destabilizes coefficients
+When predictors are strongly correlated, the model may struggle to separate their individual effects.
 
-When features are strongly correlated with one another, the model may struggle to separate their individual effects.
+Possible consequences include:
 
-Consequences can include:
-
-* Large coefficient changes between samples
-* Unexpected coefficient signs
+* Unstable coefficients
 * Large standard errors
+* Unexpected coefficient signs
 * Difficult interpretation
+* Large changes after small data updates
 
-Prediction may still be acceptable even when coefficient interpretation becomes unstable.
+Prediction quality can remain acceptable even when coefficient interpretation becomes unreliable.
 
-### Extrapolation can be unrealistic
+### Unrealistic Extrapolation
 
-A fitted relationship may not continue outside the observed feature range.
+A fitted relationship may not remain valid outside the observed feature range.
 
-A salary model trained on people with 0–20 years of experience should not automatically be trusted at 100 years of experience.
+A salary model trained on employees with 0 to 20 years of experience should not automatically be trusted for someone with 100 years of experience.
 
-### Coefficients do not prove causation
+### Association Is Not Causation
 
-A coefficient may reflect:
+Regression coefficients do not automatically identify causal effects.
+
+Observed relationships may reflect:
 
 * Confounding variables
-* Selection effects
 * Reverse causality
-* Measurement bias
+* Selection bias
+* Measurement error
+* Omitted variables
 * Coincidental correlation
 
-### Basic OLS does not perform feature selection
+### Limited Feature Selection
 
 Ordinary least squares usually estimates a coefficient for every supplied feature.
 
-When the number of features approaches or exceeds the number of observations, the model can become unstable.
+When the number of predictors is close to or greater than the number of observations:
 
-This situation can be represented as:
+$$
+p
+\geq
+n
+$$
 
-[
-p\geq n
-]
+The model may become unstable or may not have a unique OLS solution.
 
-Markdown:
+Where:
 
-```markdown
-\[
-p\geq n
-\]
-```
+* $p$ is the number of predictors.
+* $n$ is the number of observations.
 
-Here:
+Regularization may be more appropriate in this setting.
 
-* (p) is the number of features.
-* (n) is the number of observations.
+### Poor Fit for Some Target Types
 
-Inline Markdown:
-
-```markdown
-- \(p\) is the number of features.
-- \(n\) is the number of observations.
-```
-
-### Poor fit for some target types
-
-Basic linear regression is generally inappropriate for:
+Basic linear regression is not generally appropriate for:
 
 * Binary outcomes
-* Unordered categories
-* Highly skewed count data
-* Strongly bounded outcomes
+* Multiclass outcomes
+* Strongly skewed count data
+* Probabilities restricted between 0 and 1
+* Time-to-event outcomes
+* Ordinal categories
 
-Other models, such as logistic regression, Poisson regression, or tree-based models, may be more appropriate.
+Alternative models include:
+
+* Logistic regression
+* Poisson regression
+* Negative binomial regression
+* Survival models
+* Tree-based algorithms
+
+### Sensitive to Data Leakage
+
+Linear regression can appear highly accurate when training data contains information that would not be available at prediction time.
+
+Examples include:
+
+* Future information
+* Post-outcome variables
+* Target-derived features
+* Preprocessing performed before the train-test split
 
 ---
 
-## Simple example
+## Simple Example
 
-Suppose we observe the relationship between advertising expenditure and weekly sales:
+Suppose advertising expenditure and weekly sales follow this pattern:
 
-| Advertising, (x) | Sales, (y) |
+| Advertising, $x$ | Sales, $y$ |
 | ---------------: | ---------: |
 |                1 |          3 |
 |                2 |          5 |
 |                3 |          7 |
 |                4 |          9 |
 
-Table-header Markdown:
-
-```markdown
-| Advertising, \(x\) | Sales, \(y\) |
-|---:|---:|
-| 1 | 3 |
-| 2 | 5 |
-| 3 | 7 |
-| 4 | 9 |
-```
-
 These observations lie exactly on the line:
 
-[
-\hat{y}=1+2x
-]
-
-Markdown:
-
-```markdown
-\[
-\hat{y}=1+2x
-\]
-```
-
-Therefore:
-
-[
-\beta_0=1
-]
-
-Markdown:
-
-```markdown
-\[
-\beta_0=1
-\]
-```
-
-and:
-
-[
-\beta_1=2
-]
-
-Markdown:
-
-```markdown
-\[
-\beta_1=2
-\]
-```
-
-At an advertising value of five:
-
-[
-x=5
-]
-
-Markdown:
-
-```markdown
-\[
-x=5
-\]
-```
-
-The prediction is:
-
-[
+$$
 \hat{y}
 =======
 
-1+2(5)
-]
-
-Markdown:
-
-```markdown
-\[
-\hat{y}
-=
-1+2(5)
-\]
-```
+1
++
+2x
+$$
 
 Therefore:
 
-[
-\hat{y}=11
-]
+$$
+\beta_0
+=======
 
-Markdown:
+1
+$$
 
-```markdown
-\[
-\hat{y}=11
-\]
-```
+And:
 
-The model predicts sales of 11 units.
+$$
+\beta_1
+=======
 
-### Residual calculations
+2
+$$
 
-For the first observation:
+The intercept means that when advertising equals zero, predicted sales equal one unit.
 
-[
-y_1=3
-]
+The slope means that each one-unit increase in advertising is associated with a two-unit increase in predicted sales.
 
-Markdown:
+For an advertising value of five:
 
-```markdown
-\[
-y_1=3
-\]
-```
+$$
+x
+=
+
+5
+$$
 
 The prediction is:
 
-[
-\hat{y}_1
-=========
+$$
+\hat{y}
+=======
 
-# 1+2(1)
-
-3
-]
-
-Markdown:
-
-```markdown
-\[
-\hat{y}_1
-=
-1+2(1)
-=
-3
-\]
-```
-
-The residual is:
-
-[
-e_1
-===
-
-# y_1-\hat{y}_1
-
-# 3-3
-
-0
-]
-
-Markdown:
-
-```markdown
-\[
-e_1
-=
-y_1-\hat{y}_1
-=
-3-3
-=
-0
-\]
-```
-
-Because all four observations lie exactly on the regression line:
-
-[
-e_i=0
-\qquad
-\text{for every }i
-]
-
-Markdown:
-
-```markdown
-\[
-e_i=0
-\qquad
-\text{for every }i
-\]
-```
+1
++
+2(5)
+$$
 
 Therefore:
 
-[
-RSS=0
-]
+$$
+\hat{y}
+=======
 
-Markdown:
+11
+$$
 
-```markdown
-\[
-RSS=0
-\]
-```
+The model predicts sales of 11 units.
 
-### Python example
+### Residual Calculation
+
+For the first observation:
+
+$$
+y_1
+===
+
+3
+$$
+
+The model predicts:
+
+$$
+\hat{y}_1
+=========
+
+1
++
+2(1)
+====
+
+3
+$$
+
+The residual is:
+
+$$
+e_1
+===
+
+## y_1
+
+# \hat{y}_1
+
+## 3
+
+# 3
+
+0
+$$
+
+Because all observations lie exactly on the line:
+
+$$
+e_i
+===
+
+0
+\qquad
+\text{for every }
+i
+$$
+
+Therefore:
+
+$$
+RSS
+===
+
+0
+$$
+
+---
+
+## Python Example
 
 ```python
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_squared_error,
+    r2_score,
+)
 
 # Four observations and one feature
 X = np.array([[1], [2], [3], [4]])
@@ -1509,107 +1184,136 @@ y = np.array([3, 5, 7, 9])
 model = LinearRegression()
 model.fit(X, y)
 
-predictions = model.predict(X)
+training_predictions = model.predict(X)
+new_prediction = model.predict([[5]])
 
-print("Intercept:", model.intercept_)
-print("Coefficient:", model.coef_[0])
-print("Prediction for x=5:", model.predict([[5]])[0])
-print("MSE:", mean_squared_error(y, predictions))
-print("R²:", r2_score(y, predictions))
+mse = mean_squared_error(y, training_predictions)
+rmse = np.sqrt(mse)
+mae = mean_absolute_error(y, training_predictions)
+r_squared = r2_score(y, training_predictions)
+
+print(f"Intercept: {model.intercept_:.2f}")
+print(f"Coefficient: {model.coef_[0]:.2f}")
+print(f"Prediction for x=5: {new_prediction[0]:.2f}")
+print(f"MSE: {mse:.2f}")
+print(f"RMSE: {rmse:.2f}")
+print(f"MAE: {mae:.2f}")
+print(f"R²: {r_squared:.2f}")
 ```
 
 Expected output:
 
 ```text
-Intercept: 1.0
-Coefficient: 2.0
-Prediction for x=5: 11.0
-MSE: 0.0
-R²: 1.0
+Intercept: 1.00
+Coefficient: 2.00
+Prediction for x=5: 11.00
+MSE: 0.00
+RMSE: 0.00
+MAE: 0.00
+R²: 1.00
 ```
 
 ---
 
-## Evaluation metrics
+## Train-Test Example
 
-### Mean squared error
+Evaluating the model on the same data used for training can produce overly optimistic results.
 
-Mean squared error is the average squared residual:
+A better workflow uses separate training and test datasets.
 
-[
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.model_selection import train_test_split
+
+rng = np.random.default_rng(seed=42)
+
+X = np.arange(1, 101).reshape(-1, 1)
+noise = rng.normal(loc=0, scale=10, size=100)
+y = 20 + 3 * X.ravel() + noise
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.20,
+    random_state=42,
+)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+test_predictions = model.predict(X_test)
+
+mse = mean_squared_error(y_test, test_predictions)
+r_squared = r2_score(y_test, test_predictions)
+
+print(f"Intercept: {model.intercept_:.2f}")
+print(f"Coefficient: {model.coef_[0]:.2f}")
+print(f"Test MSE: {mse:.2f}")
+print(f"Test R²: {r_squared:.2f}")
+```
+
+This evaluates how well the fitted relationship generalizes to unseen observations.
+
+---
+
+## Evaluation Metrics
+
+### Mean Squared Error
+
+Mean squared error is the average squared residual.
+
+$$
 MSE
 ===
 
 \frac{1}{n}
 \sum_{i=1}^{n}
 \left(
-y_i-\hat{y}_i
-\right)^2
-]
+y_i
+---
 
-Markdown:
-
-```markdown
-\[
-MSE
-=
-\frac{1}{n}
-\sum_{i=1}^{n}
-\left(
-y_i-\hat{y}_i
+\hat{y}_i
 \right)^2
-\]
-```
+$$
 
 Equivalently:
 
-[
-MSE=\frac{RSS}{n}
-]
+$$
+MSE
+===
 
-Markdown:
-
-```markdown
-\[
-MSE=\frac{RSS}{n}
-\]
-```
+\frac{RSS}{n}
+$$
 
 Lower values are better.
 
-An MSE of zero means every prediction is exactly correct:
+An MSE of zero means every prediction is exactly correct.
 
-[
-MSE=0
+$$
+MSE
+===
+
+0
 \iff
-y_i=\hat{y}_i
-\text{ for every }i
-]
+y_i
+===
 
-Markdown:
+\hat{y}_i
+\text{ for every }
+i
+$$
 
-```markdown
-\[
-MSE=0
-\iff
-y_i=\hat{y}_i
-\text{ for every }i
-\]
-```
+The symbol $\iff$ means “if and only if.”
 
-The symbol (\iff) means “if and only if.”
+Because errors are squared, MSE places greater weight on large errors.
 
-Inline Markdown:
+### Root Mean Squared Error
 
-```markdown
-The symbol \(\iff\) means “if and only if.”
-```
+Root mean squared error is:
 
-### Root mean squared error
-
-Root mean squared error returns the error to the original units of the target:
-
-[
+$$
 RMSE
 ====
 
@@ -1617,348 +1321,464 @@ RMSE
 \frac{1}{n}
 \sum_{i=1}^{n}
 \left(
-y_i-\hat{y}_i
+y_i
+---
+
+\hat{y}_i
 \right)^2
 }
-]
-
-Markdown:
-
-```markdown
-\[
-RMSE
-=
-\sqrt{
-\frac{1}{n}
-\sum_{i=1}^{n}
-\left(
-y_i-\hat{y}_i
-\right)^2
-}
-\]
-```
+$$
 
 Equivalently:
 
-[
-RMSE=\sqrt{MSE}
-]
+$$
+RMSE
+====
 
-Markdown:
+\sqrt{MSE}
+$$
 
-```markdown
-\[
-RMSE=\sqrt{MSE}
-\]
-```
+RMSE is measured in the same units as the target variable.
 
-### Mean absolute error
+For example, if the target is measured in dollars, RMSE is also measured in dollars.
 
-Mean absolute error uses the absolute value of each residual:
+### Mean Absolute Error
 
-[
+Mean absolute error is:
+
+$$
 MAE
 ===
 
 \frac{1}{n}
 \sum_{i=1}^{n}
 \left|
-y_i-\hat{y}_i
+y_i
+---
+
+\hat{y}_i
 \right|
-]
+$$
 
-Markdown:
+MAE is less sensitive to extreme errors than MSE or RMSE.
 
-```markdown
-\[
-MAE
-=
-\frac{1}{n}
-\sum_{i=1}^{n}
-\left|
-y_i-\hat{y}_i
-\right|
-\]
-```
+It is often easier to explain to nontechnical audiences because it represents the average absolute prediction error.
 
-MAE is generally less sensitive to very large residuals than MSE.
-
-### Coefficient of determination
+### Coefficient of Determination
 
 The coefficient of determination is:
 
-[
+$$
 R^2
 ===
 
-1-
+## 1
+
 \frac{
 \sum_{i=1}^{n}
 \left(
-y_i-\hat{y}*i
+y_i
+---
+
+\hat{y}*i
 \right)^2
 }{
 \sum*{i=1}^{n}
 \left(
-y_i-\bar{y}
+y_i
+---
+
+\bar{y}
 \right)^2
 }
-]
-
-Markdown:
-
-```markdown
-\[
-R^2
-=
-1-
-\frac{
-\sum_{i=1}^{n}
-\left(
-y_i-\hat{y}_i
-\right)^2
-}{
-\sum_{i=1}^{n}
-\left(
-y_i-\bar{y}
-\right)^2
-}
-\]
-```
+$$
 
 The numerator is the residual sum of squares:
 
-[
+$$
 RSS
 ===
 
 \sum_{i=1}^{n}
 \left(
-y_i-\hat{y}_i
-\right)^2
-]
+y_i
+---
 
-Markdown:
-
-```markdown
-\[
-RSS
-=
-\sum_{i=1}^{n}
-\left(
-y_i-\hat{y}_i
+\hat{y}_i
 \right)^2
-\]
-```
+$$
 
 The denominator is the total sum of squares:
 
-[
+$$
 TSS
 ===
 
 \sum_{i=1}^{n}
 \left(
-y_i-\bar{y}
+y_i
+---
+
+\bar{y}
 \right)^2
-]
+$$
 
-Markdown:
+Therefore:
 
-```markdown
-\[
-TSS
-=
-\sum_{i=1}^{n}
-\left(
-y_i-\bar{y}
-\right)^2
-\]
-```
+$$
+R^2
+===
 
-Thus:
+## 1
 
-[
-R^2=1-\frac{RSS}{TSS}
-]
+\frac{RSS}{TSS}
+$$
 
-Markdown:
+Interpretation:
 
-```markdown
-\[
-R^2=1-\frac{RSS}{TSS}
-\]
-```
+* $R^2 = 1$ means the model perfectly predicts the observed values.
+* $R^2 = 0$ means the model performs no better than predicting the target mean.
+* $R^2 < 0$ means the model performs worse than predicting the target mean.
 
-An (R^2) of one means the predictions perfectly match the observed values:
+A high training $R^2$ does not guarantee good performance on unseen data.
 
-[
-R^2=1
-]
+### Adjusted Coefficient of Determination
 
-Markdown:
+Adjusted $R^2$ penalizes the inclusion of additional predictors.
 
-```markdown
-\[
-R^2=1
-\]
-```
-
-An (R^2) of zero means the model performs no better on the evaluated data than predicting the mean target value:
-
-[
-R^2=0
-]
-
-Markdown:
-
-```markdown
-\[
-R^2=0
-\]
-```
-
-An (R^2) value can be negative on test data when the model performs worse than predicting the target mean:
-
-[
-R^2<0
-]
-
-Markdown:
-
-```markdown
-\[
-R^2<0
-\]
-```
-
-A high training (R^2) does not necessarily mean the model will generalize well to new data.
-
-### Adjusted coefficient of determination
-
-Adjusted (R^2) penalizes the inclusion of additional predictors:
-
-[
+$$
 \bar{R}^2
 =========
 
-1-
+## 1
+
 \left(
-1-R^2
+1
+-
+
+R^2
 \right)
 \frac{n-1}{n-p-1}
-]
+$$
 
-Markdown:
+Where:
 
-```markdown
-\[
-\bar{R}^2
-=
-1-
-\left(
-1-R^2
-\right)
-\frac{n-1}{n-p-1}
-\]
-```
+* $n$ is the number of observations.
+* $p$ is the number of predictors.
 
-Here:
+Unlike ordinary $R^2$, adjusted $R^2$ can decrease when irrelevant variables are added.
 
-* (n) is the number of observations.
-* (p) is the number of predictor variables.
+### Mean Absolute Percentage Error
 
-Inline Markdown:
+Mean absolute percentage error is:
 
-```markdown
-- \(n\) is the number of observations.
-- \(p\) is the number of predictor variables.
-```
+$$
+MAPE
+====
+
+\frac{100}{n}
+\sum_{i=1}^{n}
+\left|
+\frac{
+y_i
+---
+
+\hat{y}_i
+}{
+y_i
+}
+\right|
+$$
+
+MAPE expresses prediction error as a percentage.
+
+However, it can behave poorly when actual values are zero or close to zero.
 
 ---
 
-## Resources
+## Diagnostic Checks
 
-* **Scikit-learn: `LinearRegression` documentation**
-  Implementation details, parameters, attributes, and API examples.
+### Residual Plot
 
-* **Scikit-learn: Linear Models user guide**
-  Mathematical notation and related methods such as Ridge, Lasso, and Elastic Net.
+A residual plot compares residuals with predicted values.
 
-* **Penn State STAT 501**
-  Regression assumptions, diagnostics, inference, transformations, and worked examples.
+A healthy residual plot should usually show:
 
-* **An Introduction to Statistical Learning**
-  Accessible treatment of linear regression and broader statistical-learning concepts.
+* Residuals centered near zero
+* No obvious curve
+* Roughly constant vertical spread
+* No strong clusters
+* Few highly influential observations
 
-* **The Elements of Statistical Learning**
-  More advanced treatment of linear methods, regularization, model complexity, and statistical learning theory.
+A curved pattern may indicate a nonlinear relationship.
 
-* **StatQuest: Linear Regression**
-  Visual explanations of fitting a regression line, residuals, (R^2), and statistical significance.
+A funnel shape may indicate heteroscedasticity.
+
+### Q-Q Plot
+
+A quantile-quantile plot compares residuals with a theoretical normal distribution.
+
+Large deviations from the diagonal may indicate:
+
+* Heavy tails
+* Skewness
+* Outliers
+* Non-normal errors
+
+### Multicollinearity Check
+
+The variance inflation factor for feature $j$ is:
+
+$$
+VIF_j
+=====
+
+\frac{1}{
+1
+-
+
+R_j^2
+}
+$$
+
+Where $R_j^2$ is obtained by regressing feature $j$ on the remaining predictors.
+
+Higher VIF values indicate stronger multicollinearity.
+
+Common rough guidelines are:
+
+* VIF near 1: little multicollinearity
+* VIF above 5: potentially concerning
+* VIF above 10: often considered severe
+
+These thresholds are guidelines rather than strict rules.
+
+### Influence and Leverage
+
+Some observations can have unusually large influence on the fitted model.
+
+Important concepts include:
+
+* Leverage
+* Studentized residuals
+* Cook's distance
+* DFBETAs
+
+Cook's distance measures how strongly an observation affects the fitted coefficients.
+
+A highly influential observation is not automatically incorrect, but it should be investigated.
 
 ---
 
-## Core facts to retain
+## When to Use Linear Regression
 
-> Linear regression predicts a continuous value by estimating a linear combination of features.
+Linear regression is a strong choice when:
 
-The prediction equation is:
+* The target is continuous.
+* Relationships are approximately linear.
+* Interpretability matters.
+* Training speed matters.
+* You need a baseline model.
+* You need coefficient estimates.
+* Statistical inference is important.
+* The number of predictors is manageable.
 
-[
+Examples include:
+
+* Revenue forecasting
+* Salary modeling
+* Demand estimation
+* Cost prediction
+* Housing-price analysis
+* Marketing-response analysis
+* Operational capacity planning
+
+---
+
+## When Not to Use Linear Regression
+
+Linear regression may not be the best choice when:
+
+* The target is categorical.
+* The relationship is strongly nonlinear.
+* The data contains many extreme outliers.
+* Predictors interact in complex ways.
+* The target is strongly bounded.
+* The model must automatically capture thresholds.
+* Prediction accuracy matters more than interpretability.
+* The dataset has many more features than observations without regularization.
+
+Possible alternatives include:
+
+* Logistic regression
+* Decision trees
+* Random forests
+* Gradient boosting
+* Support vector regression
+* Neural networks
+* Generalized linear models
+* Robust regression
+* Quantile regression
+
+---
+
+## Practical Workflow
+
+A typical linear regression workflow is:
+
+1. Define the continuous target variable.
+2. Select candidate predictors.
+3. Inspect missing values and outliers.
+4. Split the data into training and test sets.
+5. Fit a baseline linear model.
+6. Evaluate predictions on unseen data.
+7. Inspect residual plots.
+8. Check for multicollinearity.
+9. Add transformations or interactions when justified.
+10. Compare OLS with regularized alternatives.
+11. Document assumptions and limitations.
+12. Communicate coefficients carefully.
+
+---
+
+## Common Interview Questions
+
+### What does a coefficient mean?
+
+A coefficient represents the predicted change in the target associated with a one-unit increase in the feature, holding the other included features constant.
+
+### Why does OLS square the residuals?
+
+Squaring prevents cancellation, penalizes large errors, and creates a smooth optimization problem.
+
+### What is the difference between a residual and an error?
+
+An error is the theoretical difference between an observation and the true population relationship.
+
+A residual is the observed difference between an observation and the fitted model prediction.
+
+### What is multicollinearity?
+
+Multicollinearity occurs when predictors are strongly linearly related.
+
+It can make coefficient estimates unstable and difficult to interpret.
+
+### Does a high $R^2$ mean the model is good?
+
+Not necessarily.
+
+A high $R^2$ can occur because of:
+
+* Overfitting
+* Data leakage
+* Irrelevant predictors
+* Strong trends
+* Evaluation on training data
+
+The model should also be evaluated on unseen data and checked for assumption violations.
+
+### Why can $R^2$ be negative?
+
+On test data, $R^2$ can be negative when the model performs worse than simply predicting the mean target value.
+
+### Is feature scaling required?
+
+Feature scaling is not generally required for ordinary least squares predictions.
+
+However, scaling can be useful when:
+
+* Comparing coefficient magnitudes
+* Using Ridge or Lasso
+* Improving numerical conditioning
+* Combining regression with other preprocessing steps
+
+### Can linear regression model nonlinear relationships?
+
+Yes, if nonlinear transformations are included as features.
+
+For example:
+
+$$
 \hat{y}
 =======
 
 \beta_0
 +
-\sum_{j=1}^{p}\beta_jx_j
-]
+\beta_1x
++
+\beta_2x^2
+$$
 
-Markdown:
+The model is nonlinear in $x$ but remains linear in the coefficients.
 
-```markdown
-\[
+---
+
+## Resources
+
+### Documentation
+
+* Scikit-learn: `LinearRegression`
+* Scikit-learn: Linear Models User Guide
+* Statsmodels: Ordinary Least Squares
+
+### Courses and Tutorials
+
+* Penn State STAT 501
+* Stanford Statistical Learning
+* StatQuest: Linear Regression
+* Khan Academy: Regression
+
+### Books
+
+* *An Introduction to Statistical Learning*
+* *The Elements of Statistical Learning*
+* *Applied Linear Statistical Models*
+* *Regression and Other Stories*
+* *Introduction to Linear Regression Analysis*
+
+---
+
+## Core Facts to Retain
+
+Linear regression predicts a continuous outcome using a weighted sum of features.
+
+$$
 \hat{y}
-=
+=======
+
 \beta_0
 +
-\sum_{j=1}^{p}\beta_jx_j
-\]
-```
+\sum_{j=1}^{p}
+\beta_jx_j
+$$
 
-Ordinary least squares chooses the coefficients that minimize squared residuals:
+Ordinary least squares chooses the coefficient estimates that minimize squared residuals.
 
-[
+$$
 \hat{\boldsymbol{\beta}}
 ========================
 
 \arg\min_{\boldsymbol{\beta}}
 \sum_{i=1}^{n}
 \left(
-y_i-\hat{y}_i
+y_i
+---
+
+\hat{y}_i
 \right)^2
-]
+$$
 
-Markdown:
+A coefficient describes the expected change in the prediction associated with a one-unit change in the corresponding feature, holding other included features constant.
 
-```markdown
-\[
-\hat{\boldsymbol{\beta}}
-=
-\arg\min_{\boldsymbol{\beta}}
-\sum_{i=1}^{n}
-\left(
-y_i-\hat{y}_i
-\right)^2
-\]
-```
-
-A coefficient describes an association, not necessarily a causal effect.
-
-The most important practical checks are:
+Important practical checks include:
 
 * Whether the relationship is reasonably linear
 * Whether influential outliers exist
 * Whether residual variance is stable
 * Whether predictors are strongly collinear
-* Whether performance holds on unseen data
+* Whether performance generalizes to unseen data
+* Whether the features would be available at prediction time
+
+The most important conceptual warning is:
+
+> Regression coefficients describe associations unless the research design supports a causal interpretation.
