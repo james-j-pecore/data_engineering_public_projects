@@ -1,6 +1,4 @@
 .env
 .venv/
 venv/
-
-# Work in progress — maintained locally
 machine-learning-algorithm-index/
