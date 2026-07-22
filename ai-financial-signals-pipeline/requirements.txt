@@ -1,0 +1,11 @@
+pandas
+numpy
+yfinance
+pycoingecko
+fredapi
+python-dotenv
+scikit-learn
+xgboost
+matplotlib
+seaborn
+jupyter

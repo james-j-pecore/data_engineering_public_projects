@@ -1,144 +1,155 @@
 # AI-Enhanced Financial Signals Pipeline
 
-This project demonstrates professional-grade data engineering workflows, simulating realistic, production-adaptable pipelines from live data ingestion to feature engineering, backtesting, and research-ready outputs.
-1. Primary Focus: Build clean, reliable, modular pipelines suitable for quant research environments—emphasizing data integrity, explainable signals, and scalability.
-2. Not a Strategy Tool: This project is not intended as a live trading system or alpha model. It focuses on robust data workflows that help researchers and strategists quickly prototype and backtest ideas with minimal engineering overhead.
-3. Professional Standards:
+Public market data → engineered technical signals → rule-based and ML-augmented backtests, on a
+single equity ticker (AAPL) over a rolling historical window.
 
-- Multi-source ingestion (Equities, Crypto, Macro)
-- Modular, production-ready architecture
-- Explainable, validated signal pipelines
-- Reproducible backtesting results
-- Clean documentation and extensibility
+**Theme:** demonstrate the data engineering and evaluation discipline behind a signal-research
+workflow — ingestion, feature engineering, a simple rule-based strategy, and an XGBoost
+meta-signal layer trained on top of it — not a trading strategy itself.
 
-Why This Project Matters
-In quant research, the ability to rapidly translate ambiguous data needs into reliable, clean pipelines is critical. This project reflects my approach to building flexible, validated data systems that can support high-frequency research cycles with downstream reliability.
+> **Educational demonstration only.** This is not financial advice and is not a live trading
+> system. The strategies here (RSI/SMA crossover, XGBoost meta-signal) are intentionally simple
+> and are not validated out-of-sample; see [Known limitations](#known-limitations) below for the
+> gaps between what's implemented and what a production signal-research pipeline would need.
 
----
+## Architecture
 
-## Project Overview
+```
+yfinance / CoinGecko / FRED
+     │  three independent ingestion functions — only the equity (yfinance) path is
+     ▼  wired into the feature/backtest/ML flow below; crypto and macro are demonstrated
+src/data/loader.py           standalone in notebooks/test_data_loader.ipynb
+     ▼
+src/features/signals.py      SMA, RSI, momentum, MACD — each computed causally
+     │                       (rolling/ewm/shift), one feature per column
+     ▼
+src/backtest/simple_backtester.py   RSI+SMA crossover rule → next-day position (shifted)
+     │                              → strategy returns → total return / Sharpe
+     ▼
+src/models/meta_signals.py   XGBoost classifier trained on the same signal columns,
+     │                       predicts next-day up/down → position (+1/-1) fed back
+     ▼                       through the same backtester
+src/viz/plotting.py          cumulative returns, signal distributions, signal correlation
+```
 
-This project demonstrates **end-to-end data engineering and AI signal development** — from live data ingestion to feature engineering, machine learning augmentation, and backtesting, built on **clean, modular code infrastructure**.
+Each stage is exercised from a notebook rather than a single entrypoint script — see
+[Running it](#running-it).
 
-It simulates **realistic, production-adaptable pipelines**, with a focus on **practical signals**, **explainable models**, and **scalable architecture**, reflecting professional data engineering standards in **quant research and finance**.
+## Tech stack
 
-**Free, zero-friction data ingestion** via yfinance and CoinGecko  
-**Key-based macroeconomic data** via FRED  
-**Production discipline meets exploratory flexibility**
+Python 3.11+ · yfinance (equities) · pycoingecko (crypto) · fredapi (macro) · pandas / numpy ·
+scikit-learn + XGBoost (meta-signal classifier) · matplotlib + seaborn (plots) · Jupyter
 
-> **Disclaimer: Educational Demonstration Only**
->
-> This repository is **not financial advice** and is **not intended to be used for real trading**.
-> It serves as a **technical demonstration** of **production-ready data pipelines**, **modular feature engineering**, and **explainable ML augmentation** — showcasing **professional-grade data engineering workflows** suitable for roles in **quant research**, **data science**, or **financial technology**.
->
-> The strategies here are intentionally simple (e.g., RSI/SMA crossovers) and do **not reflect proprietary alpha** or live production trading systems.
-
-
----
-
-## Tech Stack
-
-| Component            | Stack                                               |
-| ---------------------|---------------------------------------------------- |
-| **Languages**        | Python (3.11+)                                      |
-| **Data APIs**        | yfinance (stocks), CoinGecko (crypto), FRED (macro) |
-| **Data Engineering** | pandas, SQLAlchemy optional                         |
-| **Modeling**         | scikit-learn, XGBoost                                |
-| **Backtesting**      | Custom Python backtester                             |
-| **Visualization**    | matplotlib, seaborn                                  |
-| **Structure**         | pip-installable, modular, expandable                 |
-
----
-
-## Key Features
-
-Multi-Source Data Ingestion (Equities, Crypto, Macroeconomics)  
-Modular Alpha Signal Library (Momentum, Moving Averages, RSI)  
-AI Meta-Signal Layer (XGBoost on engineered signals)  
-Backtesting with Performance Metrics (Sharpe Ratio, Max Drawdown)  
-Streamlit/Dashboard-ready Outputs  
-SQL Pipeline Optionality for Local Storage  
-Professional, Scalable Code Structure  
-
----
-
-### 📂 Repository Structure
+## Project structure
 
 ```
 ai-financial-signals-pipeline/
-│
 ├── src/
-│   ├── data/        # Data ingestion modules (yfinance, CoinGecko, FRED)
-│   ├── features/    # Signal engineering (RSI, SMA, Momentum, MACD)
-│   ├── models/      # ML meta-signals (XGBoost classifiers)
-│   ├── backtest/    # Backtesting logic and performance metrics
-│   ├── viz/         # Visualization utilities (returns plots, heatmaps)
-│   └── config/      # Configuration files and constants
-│
-├── notebooks/       # EDA and ML training notebooks
-├── images/          # Static result images for README
-├── requirements.txt # Package dependencies
-└── README.md        # Project documentation
+│   ├── data/loader.py         get_equity_data (yfinance), get_crypto_data (CoinGecko),
+│   │                          get_macro_data (FRED)
+│   ├── features/signals.py    add_sma, add_rsi, add_momentum, add_macd
+│   ├── backtest/
+│   │   └── simple_backtester.py   simple_strategy_signals, backtest_returns,
+│   │                               summarize_performance (total return + Sharpe only)
+│   ├── models/meta_signals.py     prepare_ml_features, train_meta_model, predict_positions
+│   └── viz/plotting.py            plot_cumulative_returns, plot_signal_distribution,
+│                                   plot_signal_correlation
+├── notebooks/                 how each module is actually run and validated (see below)
+├── images/                    output plots referenced in Results, generated by the notebooks
+├── requirements.txt
+└── .env.example                FRED_API_KEY (CoinGecko and yfinance need no key)
 ```
 
----
+## Setup
 
-## 📊 Example Use-Case
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env   # fill in FRED_API_KEY from https://fred.stlouisfed.org/docs/api/api_key.html
+```
 
-> Backtest a **momentum crossover strategy** on S&P 500 equities, **augment with AI meta-signals** predicting short-term reversal strength, and **visualize performance metrics** — all sourced from public APIs in a **clean, modular pipeline**.
+## Running it
 
----
+There's no single pipeline entrypoint — each notebook drives one stage end-to-end against live
+data pulled at run time, so exact figures will differ from [Results](#results) on a re-run:
+
+```bash
+jupyter notebook notebooks/
+```
+
+- **test_data_loader.ipynb** — calls all three ingestion functions independently (AAPL equity,
+  bitcoin, UNRATE macro series).
+- **test_feature_signals.ipynb** — pulls one equity series and adds all four signal columns.
+- **test_backtester.ipynb** — feature engineering → rule-based RSI/SMA crossover → backtested
+  returns → performance summary.
+- **test_metasignal.ipynb** — same features feed an XGBoost classifier (`prepare_ml_features` →
+  `train_meta_model` → `predict_positions`) whose output positions are run back through the same
+  backtester.
+- **visual_diagnostics.ipynb** — generates the three plots in `images/` from a one-year AAPL
+  window.
 
 ## Results
 
-### Strategy vs Market Performance
+Figures below are all generated by `visual_diagnostics.ipynb` from one historical, one-year AAPL
+window and are illustrative of the code path, not a validated backtest — exact numbers will
+differ on any re-run against live data, so specific return/Sharpe figures aren't reproduced here
+(see [Known limitations](#known-limitations)).
 
-Our basic RSI-SMA crossover strategy demonstrated **defensive stability**, reducing drawdowns compared to the market, but with limited upside capture:
+### Strategy vs. market
 
 ![Cumulative Returns](images/cumulative_returns.png)
 
-| Metric               | Value   |
-|-----------------------|---------|
-| **Sharpe Ratio**      | 1.02    |
-| **Total Return (1Y)** | +4.8%   |
-| **Max Drawdown**      | -3.7%   |
+The strategy line is flat for nearly the whole window: the RSI+SMA crossover condition (RSI < 40
+with price above its SMA, or the mirror short condition) rarely fires on this ticker/window, so
+the result is closer to "mostly out of the market" than an active, risk-adjusted outperformance.
+`summarize_performance` returns only total return and Sharpe ratio — no drawdown metric is
+computed by the code.
 
-> *Interpretation*: The strategy minimizes downside risk while staying flat during weak markets — a foundation for further meta-signal refinement.
-
----
-
-### Signal Feature Correlation
+### Signal feature correlation
 
 ![Signal Correlation Heatmap](images/signal_correlation_heatmap.png)
 
-Signals exhibit **meaningful diversity**:
-- **SMA** decorrelates from trend-based features
-- **RSI, Momentum, MACD** show natural trend clustering
-- *Supports multi-factor strategy robustness*
+`sma_20` (a price-level feature) decorrelates from the more stationary oscillators (RSI,
+momentum, MACD), which cluster together — a single-ticker, single-window observation, not a
+general claim about signal diversity across markets.
 
----
-
-### Signal Distributions
+### Signal distributions
 
 ![Signal Distributions](images/signal_distributions.png)
 
-All signals show **real-world distributions** without data leakage or lookahead bias — **robust feature pipelines** suitable for live trading adaptations.
+Per-feature histograms over the same window, generated by `plot_signal_distribution`.
 
----
+## Design decisions & simplifications
 
-## Why This Project?
+- **Notebooks as the run interface, not scripts** — this is a research-notebook workflow by
+  design; each notebook is a readable, re-runnable record of one stage rather than a CLI wrapped
+  around the same logic.
+- **Single ticker, single window** — keeps the demo fast and the plots readable; the ingestion
+  functions are ticker/series-agnostic and take any yfinance ticker, CoinGecko coin ID, or FRED
+  series ID as an argument.
+- **Crypto and macro loaders are not wired into features/backtest** — they exist and are
+  exercised in `test_data_loader.ipynb` to show the ingestion layer isn't equity-only, but the
+  signal/backtest/ML path currently only consumes equity data.
+- **No database or orchestration layer** — everything runs in-memory inside a notebook; adding
+  DuckDB/Dagster here would demonstrate orchestration, not signal research, which is this
+  project's focus (see the Spotify pipeline for that side of the portfolio).
 
-Most stock prediction projects use unrealistic black-box models.  
-This project focuses on:
-**Realistic alpha signals**  
-**Explainable feature pipelines**  
-**Robust backtesting metrics**  
-**Production-ready modularity** (scaling to live data feeds, dashboards, or SQL pipelines)
+## Known limitations
 
----
+- **ML train/test split is random, not chronological** (`train_test_split` with default
+  shuffling in `prepare_ml_features`). Each row's features are computed causally, but a random
+  split lets the model train on rows temporally after some of its test rows — a real time-series
+  evaluation would use a forward chronological split or walk-forward validation instead.
+- **No transaction costs, slippage, or position sizing** in `backtest_returns` — returns are
+  frictionless `position × daily return`.
+- **No drawdown, hit-rate, or turnover metrics** — `summarize_performance` computes only total
+  return and Sharpe ratio.
+- **No automated tests** — the `notebooks/test_*.ipynb` files are manual smoke tests run by hand,
+  not a pytest suite.
+- **Single instrument, non-adjusted prices** — one ticker per run, no portfolio-level backtest,
+  and `get_equity_data` doesn't request dividend/split-adjusted prices explicitly.
 
 ## Contact
 
-**Author**: James J. Pecore  
-
----
+**Author**: James J. Pecore
