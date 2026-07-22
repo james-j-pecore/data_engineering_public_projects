@@ -14,7 +14,7 @@ Examples include predicting:
 The model represents the target as a weighted sum of the input features:
 
 \[
-\hat{y} = \beta_0+\beta_1x_1+\beta_2x_2+\cdots+\beta_px_p
+y^​=β0​+β1​x1​+β2​x2​+⋯+βp​xp​
 \]
 
 Here:
@@ -24,7 +24,7 @@ Here:
 - \(\beta_0\) is the intercept.
 - \(\beta_1,\ldots,\beta_p\) are learned coefficients.
 
-Standard ordinary least squares linear regression chooses the coefficients that minimize the sum of squared prediction errors. citeturn908062search0turn908062search7
+Standard ordinary least squares linear regression chooses the coefficients that minimize the sum of squared prediction errors. 
 
 ---
 
@@ -177,7 +177,7 @@ It usually does not meaningfully change the model itself.
 
 ### `tol`
 
-A numerical convergence tolerance used for certain sparse-data calculations. It is primarily a computational setting rather than a modeling decision. citeturn908062search0
+A numerical convergence tolerance used for certain sparse-data calculations. It is primarily a computational setting rather than a modeling decision.
 
 ### Important modeling choices that act like hyperparameters
 
@@ -386,11 +386,11 @@ An \(R^2\) of 1 means the model explains all observed variation in the target wi
 
 ## Resources
 
-- **Scikit-learn `LinearRegression` documentation:** implementation details, parameters, and API examples. citeturn908062search0
-- **Scikit-learn guide to linear models:** mathematical notation and related models such as Ridge and Lasso. citeturn908062search7
-- **Penn State STAT 501:** detailed regression course notes with assumptions, diagnostics, inference, and examples. citeturn908062search6
-- **Stanford Statistical Learning course:** accessible treatment of regression and broader statistical-learning concepts. citeturn908062search8
-- **The Elements of Statistical Learning:** advanced reference covering linear methods and the broader theoretical framework of statistical learning. citeturn908062search18
+- **Scikit-learn `LinearRegression` documentation:** implementation details, parameters, and API examples. (https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html?utm_source=chatgpt.com)
+- **Scikit-learn guide to linear models:** mathematical notation and related models such as Ridge and Lasso. (https://scikit-learn.org/stable/modules/linear_model.html?utm_source=chatgpt.com)
+- **Penn State STAT 501:** detailed regression course notes with assumptions, diagnostics, inference, and examples. (https://online.stat.psu.edu/stat501/?utm_source=chatgpt.com)
+- **Stanford Statistical Learning course:** accessible treatment of regression and broader statistical-learning concepts. (https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning-r?utm_source=chatgpt.com)
+- **The Elements of Statistical Learning:** advanced reference covering linear methods and the broader theoretical framework of statistical learning. (https://link.springer.com/book/10.1007/978-0-387-84858-7?utm_source=chatgpt.com)
 
 ### Core fact to retain
 
