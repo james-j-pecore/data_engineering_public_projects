@@ -36,7 +36,8 @@ Table of Contents
 	- [Recurrent Neural Networks (RNN)](#recurrent-neural-networks-rnn)
 	- [Long Short Term Models (LSTM)](#long-short-term-models-lstm)
 - Large Language Models
-    - [Large Language Models](#large-language-models)
+    - [Large Language Models (LLMs)](#large-language-models)
+	- [Retrieval Augmented Generation (RAG)](#retrieval-augmented-generation)
 
 ---
 

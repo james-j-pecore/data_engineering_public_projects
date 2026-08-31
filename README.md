@@ -49,10 +49,8 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
 
 <img src="nyc-electricity-consumption-pipeline/images/01_overview_metrics_trend.png" alt="NYC Electricity Consumption dashboard overview" width="700">
 
-### 🚧 [Machine Learning Algorithm Index](./machine-learning-algorithm-index) — *content complete, not yet published*
-A personal reference index of classical ML and deep learning algorithms, each with a consistent
-write-up (overview, intuition, math, hyperparameters, advantages/limitations, a hand-verified
-worked example, and further reading) plus a small runnable script.
+### 🚧 [Machine Learning Algorithm Index](./machine-learning-algorithm-index)
+A personal reference index of classical ML and deep learning algorithms, each with a consistent write-up (overview, intuition, math, hyperparameters, advantages/limitations, a hand-verified worked example, and further reading) plus a small runnable script.
 
 - ✅ Linear Regression, Logistic Regression
 - ✅ Decision Tree, Random Forest, SVM, K-Nearest Neighbors, Naive Bayes
