@@ -49,7 +49,7 @@ This repository serves as a **recruiter-friendly showcase**, highlighting:
 
 <img src="nyc-electricity-consumption-pipeline/images/01_overview_metrics_trend.png" alt="NYC Electricity Consumption dashboard overview" width="700">
 
-### 🚧 [Machine Learning Algorithm Index](./machine-learning-algorithm-index) — *in progress, not yet published*
+### 🚧 [Machine Learning Algorithm Index](./machine-learning-algorithm-index) — *content complete, not yet published*
 A personal reference index of classical ML and deep learning algorithms, each with a consistent
 write-up (overview, intuition, math, hyperparameters, advantages/limitations, a hand-verified
 worked example, and further reading) plus a small runnable script.
@@ -58,7 +58,7 @@ worked example, and further reading) plus a small runnable script.
 - ✅ Decision Tree, Random Forest, SVM, K-Nearest Neighbors, Naive Bayes
 - ✅ K-Means Clustering, Hierarchical Clustering, Principal Component Analysis
 - ✅ Gradient Boosting, XGBoost
-- ⬜ Neural Networks, CNNs, RNNs, LSTMs, Large Language Models
+- ✅ Neural Networks, CNNs, RNNs, LSTMs, Large Language Models, Retrieval-Augmented Generation
 
 This folder is still local-only (`.gitignore`d) while it's built out — the link above won't
 resolve on GitHub until it's further along and gets published.
