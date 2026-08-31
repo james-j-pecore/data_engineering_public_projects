@@ -54,11 +54,10 @@ A personal reference index of classical ML and deep learning algorithms, each wi
 write-up (overview, intuition, math, hyperparameters, advantages/limitations, a hand-verified
 worked example, and further reading) plus a small runnable script.
 
-- ✅ Linear Regression
-- ✅ Logistic Regression
-- ⬜ Decision Tree, Random Forest, SVM, K-Nearest Neighbors, Naive Bayes
-- ⬜ K-Means Clustering, Hierarchical Clustering, Principal Component Analysis
-- ⬜ Gradient Boosting, XGBoost
+- ✅ Linear Regression, Logistic Regression
+- ✅ Decision Tree, Random Forest, SVM, K-Nearest Neighbors, Naive Bayes
+- ✅ K-Means Clustering, Hierarchical Clustering, Principal Component Analysis
+- ✅ Gradient Boosting, XGBoost
 - ⬜ Neural Networks, CNNs, RNNs, LSTMs, Large Language Models
 
 This folder is still local-only (`.gitignore`d) while it's built out — the link above won't
