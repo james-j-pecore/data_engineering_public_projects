@@ -61,6 +61,17 @@ A personal reference index of classical ML and deep learning algorithms, each wi
 This folder is still local-only (`.gitignore`d) while it's built out — the link above won't
 resolve on GitHub until it's further along and gets published.
 
+### ✅ [Cloud Platform Tool Index](./cloud-platform-tool-index)
+A reference index mapping data engineering tools and services across AWS, GCP, and Azure — each category gets a side-by-side comparison table plus a "key differences" section on where the "equivalent" services actually diverge (consistency models, pricing shape, managed vs. serverless, API ergonomics).
+
+- ✅ Object Storage, Relational Database (OLTP), Data Warehouse (OLAP)
+- ✅ Distributed Batch Processing, Serverless ETL, Workflow Orchestration
+- ✅ Streaming/Pub-Sub Messaging, Stream Processing, NoSQL Database
+- ✅ Data Catalog & Governance, IAM & Access Control
+- ✅ Serverless Compute, Container Orchestration, Secrets Management, Monitoring & Observability
+
+📊 *Focus*: **multi-cloud data engineering service comparison**
+
 ---
 
 ## 🏆 Goals for This Portfolio
