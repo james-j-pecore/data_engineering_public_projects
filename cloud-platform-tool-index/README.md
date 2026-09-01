@@ -18,22 +18,20 @@ A personal index of data engineering tools and services across AWS, GCP, and Azu
 | # | Category | AWS | GCP | Azure |
 |---|----------|-----|-----|-------|
 | 1 | [Object Storage](1.object-storage/README.md) | S3 | Cloud Storage (GCS) | Blob Storage |
-| 2 | Relational Database (OLTP) | RDS | Cloud SQL | Azure SQL Database |
-| 3 | Data Warehouse (OLAP) | Redshift | BigQuery | Synapse Analytics |
-| 4 | Distributed Batch Processing | EMR | Dataproc | HDInsight |
-| 5 | Serverless ETL | Glue | Dataflow | Data Factory (Mapping Data Flows) |
-| 6 | Workflow Orchestration | Managed Workflows for Apache Airflow (MWAA) | Cloud Composer | Data Factory (Pipelines) |
-| 7 | Streaming / Pub-Sub Messaging | Kinesis Data Streams | Pub/Sub | Event Hubs |
-| 8 | Stream Processing | Kinesis Data Analytics | Dataflow (streaming) | Stream Analytics |
-| 9 | NoSQL Key-Value / Document | DynamoDB | Firestore | Cosmos DB |
-| 10 | Data Catalog & Governance | Glue Data Catalog | Dataplex / Data Catalog | Purview |
-| 11 | IAM & Access Control | IAM | Cloud IAM | Entra ID (Azure AD) + RBAC |
-| 12 | Serverless Compute (Functions) | Lambda | Cloud Functions | Azure Functions |
-| 13 | Container Orchestration | ECS / EKS | GKE | AKS |
-| 14 | Secrets Management | Secrets Manager | Secret Manager | Key Vault |
-| 15 | Monitoring & Observability | CloudWatch | Cloud Monitoring | Azure Monitor |
-
-Only row 1 is written so far — the rest are planned categories. Rows will link out as entries are added.
+| 2 | [Relational Database (OLTP)](2.relational-database/README.md) | RDS | Cloud SQL | Azure SQL Database |
+| 3 | [Data Warehouse (OLAP)](3.data-warehouse/README.md) | Redshift | BigQuery | Synapse Analytics |
+| 4 | [Distributed Batch Processing](4.distributed-batch-processing/README.md) | EMR | Dataproc | HDInsight |
+| 5 | [Serverless ETL](5.serverless-etl/README.md) | Glue | Dataflow | Data Factory (Mapping Data Flows) |
+| 6 | [Workflow Orchestration](6.workflow-orchestration/README.md) | Managed Workflows for Apache Airflow (MWAA) | Cloud Composer | Data Factory (Pipelines) |
+| 7 | [Streaming / Pub-Sub Messaging](7.streaming-messaging/README.md) | Kinesis Data Streams | Pub/Sub | Event Hubs |
+| 8 | [Stream Processing](8.stream-processing/README.md) | Kinesis Data Analytics | Dataflow (streaming) | Stream Analytics |
+| 9 | [NoSQL Key-Value / Document](9.nosql-database/README.md) | DynamoDB | Firestore | Cosmos DB |
+| 10 | [Data Catalog & Governance](10.data-catalog-governance/README.md) | Glue Data Catalog | Dataplex / Data Catalog | Purview |
+| 11 | [IAM & Access Control](11.iam-access-control/README.md) | IAM | Cloud IAM | Entra ID (Azure AD) + RBAC |
+| 12 | [Serverless Compute (Functions)](12.serverless-compute/README.md) | Lambda | Cloud Functions | Azure Functions |
+| 13 | [Container Orchestration](13.container-orchestration/README.md) | ECS / EKS | GKE | AKS |
+| 14 | [Secrets Management](14.secrets-management/README.md) | Secrets Manager | Secret Manager | Key Vault |
+| 15 | [Monitoring & Observability](15.monitoring-observability/README.md) | CloudWatch | Cloud Monitoring | Azure Monitor |
 
 ---
 
