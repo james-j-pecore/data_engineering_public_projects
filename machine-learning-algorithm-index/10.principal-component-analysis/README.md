@@ -130,17 +130,31 @@ A classic small dataset for illustrating PCA (10 points, 2 features):
 | 1.5 | 1.6 |
 | 1.1 | 0.9 |
 
-Centering the data (mean $\approx(1.81, 1.91)$) and computing the sample covariance matrix:
+Centering the data (mean $\approx (1.81, 1.91)$) and computing the sample covariance matrix:
 
-$$\Sigma = \begin{pmatrix} 0.6166 & 0.6154 \\ 0.6154 & 0.7166 \end{pmatrix}$$
+$$
+\Sigma =
+\begin{pmatrix}
+0.6166 & 0.6154 \\
+0.6154 & 0.7166
+\end{pmatrix}
+$$
 
-Solving for eigenvalues of this $2\times 2$ symmetric matrix (using $\lambda = \frac{\text{tr}(\Sigma)}{2} \pm \sqrt{\left(\frac{a-d}{2}\right)^2 + b^2}$ for $\Sigma=\begin{pmatrix}a&b\\b&d\end{pmatrix}$) gives:
+Solving for eigenvalues of this $2 \times 2$ symmetric matrix (using $\lambda = \frac{\operatorname{tr}(\Sigma)}{2} \pm \sqrt{\left(\frac{a-d}{2}\right)^2 + b^2}$ for $\Sigma = \begin{pmatrix} a & b \ b & d \end{pmatrix}$) gives:
 
-$$\lambda_1 \approx 1.2840, \qquad \lambda_2 \approx 0.0491$$
+$$
+\lambda_1 \approx 1.2840,
+\qquad
+\lambda_2 \approx 0.0491
+$$
 
-so the first component alone explains $1.2840 / (1.2840+0.0491) \approx 96.3\%$ of the total variance — consistent with the data visibly lying close to a single diagonal line. The corresponding (unit-length) eigenvector for $\lambda_1$ is approximately $(0.6779, 0.7352)$, and projecting the first (centered) data point, $(0.69, 0.49)$, onto it:
+so the first component alone explains $1.2840 / (1.2840 + 0.0491) \approx 96.3%$ of the total variance — consistent with the data visibly lying close to a single diagonal line.
 
-$$z_1 = 0.69 \times 0.6779 + 0.49 \times 0.7352 \approx 0.828$$
+The corresponding unit-length eigenvector for $\lambda_1$ is approximately $(0.6779, 0.7352)$, and projecting the first centered data point, $(0.69, 0.49)$, onto it:
+
+$$
+z_1 = 0.69 \times 0.6779 + 0.49 \times 0.7352 \approx 0.828
+$$
 
 ### Python example
 
