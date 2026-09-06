@@ -4,7 +4,13 @@ Reads directly from whichever DuckDB index(es) src/index.py has already built â€
 `python -m src.index` first if data/*.duckdb doesn't exist yet.
 """
 
+import sys
+from pathlib import Path
+
 import streamlit as st
+
+# `streamlit run` only puts this file's folder on sys.path, not the project root.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.ask import ask
 from src.config import CHUNK_SIZES, DEFAULT_CHUNK_SIZE, DEFAULT_K, K_VALUES
