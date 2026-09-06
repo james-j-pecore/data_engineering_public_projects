@@ -72,6 +72,16 @@ A reference index mapping data engineering tools and services across AWS, GCP, a
 
 📊 *Focus*: **multi-cloud data engineering service comparison**
 
+### ✅ [Portfolio RAG Pipeline](./portfolio-rag-pipeline)
+A working Retrieval-Augmented Generation system built over every README in this repo, plus an evaluation harness that empirically measures how chunk size and retrieval depth (`k`) actually affect retrieval and answer quality — turning a theoretical claim from the ML Algorithm Index's RAG entry into a measured result on real data.
+
+- ✅ Local embeddings (`sentence-transformers`) + DuckDB (`vss`) vector store, one index per chunk-size config
+- ✅ Hand-written gold Q&A set (26 questions), scored live against Claude for recall@k, precision@k, and answer correctness across a full 3×3 chunk-size/`k` sweep (234 live calls)
+- ✅ Streamlit chat interface over the indexed corpus
+- 📈 Headline finding: the best-*precision* config (`chunk_size=1200, k=2`) is not the best-*answer* config — `chunk_size=600, k=4` wins on measured answer correctness (0.962 vs. 0.827), which picking a config by retrieval precision alone would have missed
+
+📊 *Focus*: **RAG system design + empirical retrieval evaluation, not just a chatbot demo**
+
 ---
 
 ## 🏆 Goals for This Portfolio

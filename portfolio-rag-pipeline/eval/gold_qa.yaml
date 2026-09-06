@@ -1,0 +1,160 @@
+# Hand-written gold set. expected_source is the one document retrieval should surface;
+# expected_keywords are short phrases pulled from that document's actual text, checked as
+# case-insensitive substrings of the generated answer (see ../README.md "The evaluation harness").
+
+- question: "Why does ADLS Gen2 matter for analytics workloads on Azure rather than plain Blob Storage?"
+  expected_source: cloud-platform-tool-index/1.object-storage/README.md
+  expected_keywords:
+    - "hierarchical namespace"
+    - "POSIX"
+
+- question: "What's the core storage-architecture difference between Aurora/AlloyDB and standard RDS/Cloud SQL?"
+  expected_source: cloud-platform-tool-index/2.relational-database/README.md
+  expected_keywords:
+    - "decouple"
+    - "log-structured"
+
+- question: "What is the single biggest architectural difference between BigQuery and Redshift?"
+  expected_source: cloud-platform-tool-index/3.data-warehouse/README.md
+  expected_keywords:
+    - "serverless"
+    - "cluster"
+
+- question: "Which of AWS EMR, GCP Dataproc, or Azure HDInsight spins up clusters the fastest?"
+  expected_source: cloud-platform-tool-index/4.distributed-batch-processing/README.md
+  expected_keywords:
+    - "Dataproc"
+    - "90 seconds"
+
+- question: "What makes GCP Dataflow fundamentally different from AWS Glue and Azure Data Factory's Mapping Data Flows?"
+  expected_source: cloud-platform-tool-index/5.serverless-etl/README.md
+  expected_keywords:
+    - "Apache Beam"
+    - "batch and streaming"
+
+- question: "Are Airflow DAGs portable between AWS MWAA and GCP Cloud Composer?"
+  expected_source: cloud-platform-tool-index/6.workflow-orchestration/README.md
+  expected_keywords:
+    - "same open-source"
+    - "portable"
+
+- question: "Which of Kinesis, Pub/Sub, or Event Hubs offers a Kafka-compatible protocol endpoint?"
+  expected_source: cloud-platform-tool-index/7.streaming-messaging/README.md
+  expected_keywords:
+    - "Event Hubs"
+    - "Kafka"
+
+- question: "Which stream-processing service shares its underlying engine with a batch-processing service on the same cloud?"
+  expected_source: cloud-platform-tool-index/8.stream-processing/README.md
+  expected_keywords:
+    - "Dataflow"
+    - "Apache Beam"
+
+- question: "Which NoSQL database offers wire-protocol compatibility with MongoDB and Cassandra?"
+  expected_source: cloud-platform-tool-index/9.nosql-database/README.md
+  expected_keywords:
+    - "Cosmos DB"
+    - "wire-protocol"
+
+- question: "Why does AWS need a separate Lake Formation service in addition to Glue Data Catalog?"
+  expected_source: cloud-platform-tool-index/10.data-catalog-governance/README.md
+  expected_keywords:
+    - "Lake Formation"
+    - "fine-grained"
+
+- question: "How does Azure split identity and authorization differently from AWS IAM and GCP Cloud IAM?"
+  expected_source: cloud-platform-tool-index/11.iam-access-control/README.md
+  expected_keywords:
+    - "Entra ID"
+    - "RBAC"
+
+- question: "What's architecturally different about GCP Cloud Functions 2nd gen compared to AWS Lambda?"
+  expected_source: cloud-platform-tool-index/12.serverless-compute/README.md
+  expected_keywords:
+    - "Cloud Run"
+    - "concurrent"
+
+- question: "Which cloud's managed Kubernetes offering has a free control plane?"
+  expected_source: cloud-platform-tool-index/13.container-orchestration/README.md
+  expected_keywords:
+    - "AKS"
+    - "free"
+
+- question: "What does Azure Key Vault bundle together that AWS and GCP split into separate services?"
+  expected_source: cloud-platform-tool-index/14.secrets-management/README.md
+  expected_keywords:
+    - "secrets"
+    - "keys"
+    - "certificates"
+
+- question: "What query language is distinctive to Azure Monitor's log analytics?"
+  expected_source: cloud-platform-tool-index/15.monitoring-observability/README.md
+  expected_keywords:
+    - "Kusto"
+    - "KQL"
+
+- question: "How does gradient boosting differ from random forest in how its trees are trained?"
+  expected_source: machine-learning-algorithm-index/11.gradient-boosting/README.md
+  expected_keywords:
+    - "sequentially"
+    - "residuals"
+
+- question: "Why is cosine similarity typically preferred over Euclidean distance for comparing text embeddings in RAG retrieval?"
+  expected_source: machine-learning-algorithm-index/18.retrieval-augmented-generation/README.md
+  expected_keywords:
+    - "cosine"
+    - "directional similarity"
+
+- question: "What does every algorithm entry in the machine-learning-algorithm-index consistently include, per its stated template?"
+  expected_source: machine-learning-algorithm-index/README.md
+  expected_keywords:
+    - "hyperparameters"
+    - "Simple example"
+
+- question: "Why are dbt staging and intermediate models materialized as views while marts are materialized as tables in the Spotify project?"
+  expected_source: spotify-dbt-analytics-pipeline/README.md
+  expected_keywords:
+    - "recompute"
+    - "persisted"
+
+- question: "What does dbt's ref() function let dbt build automatically, without anyone declaring it by hand?"
+  expected_source: spotify-dbt-analytics-pipeline/README.md
+  expected_keywords:
+    - "directed acyclic graph"
+    - "DAG"
+
+- question: "Why is the ML train/test split in the AI-Enhanced Financial Signals Pipeline considered a known limitation?"
+  expected_source: ai-financial-signals-pipeline/README.md
+  expected_keywords:
+    - "random"
+    - "chronological"
+
+- question: "Why doesn't the AI-Enhanced Financial Signals Pipeline use a database or orchestration layer?"
+  expected_source: ai-financial-signals-pipeline/README.md
+  expected_keywords:
+    - "signal research"
+    - "orchestration"
+
+- question: "Why is the NYISO grid-load series pulled into the NYC electricity pipeline alongside NYCHA data?"
+  expected_source: nyc-electricity-consumption-pipeline/README.md
+  expected_keywords:
+    - "overclaiming"
+    - "outside context"
+
+- question: "Why does the NYC electricity pipeline use a time-based train/test split instead of k-fold cross-validation?"
+  expected_source: nyc-electricity-consumption-pipeline/README.md
+  expected_keywords:
+    - "leaks future information"
+    - "trailing holdout"
+
+- question: "What sections does every entry in the cloud-platform-tool-index follow, per its stated per-entry template?"
+  expected_source: cloud-platform-tool-index/README.md
+  expected_keywords:
+    - "Key differences"
+    - "Resources"
+
+- question: "What is the stated theme of the AI-Enhanced Financial Signals Pipeline project, per the main portfolio README?"
+  expected_source: README.md
+  expected_keywords:
+    - "financial data infrastructure"
+    - "explainable AI"

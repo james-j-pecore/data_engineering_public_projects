@@ -1,0 +1,8 @@
+python-dotenv
+anthropic
+sentence-transformers
+duckdb
+pyyaml
+pandas
+numpy
+streamlit
