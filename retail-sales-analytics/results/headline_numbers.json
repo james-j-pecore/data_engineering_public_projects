@@ -1,0 +1,656 @@
+{
+  "row_counts": {
+    "line_items": 4999,
+    "orders": 1366,
+    "customers": 788,
+    "dropped_null_qty_rows": 1,
+    "negative_shipping_days_rows": 75,
+    "date_range": [
+      "2013-02-11",
+      "2017-02-07"
+    ]
+  },
+  "category_summary": {
+    "Office Supplies": {
+      "revenue": 4099225.22,
+      "gross_profit": 1901692.18,
+      "units": 106316,
+      "line_items": 3952,
+      "avg_unit_price": 37.7149,
+      "orders": 1290,
+      "margin_pct": 0.4639,
+      "revenue_per_order": 3177.694,
+      "revenue_share": 0.7904
+    },
+    "Technology": {
+      "revenue": 999194.08,
+      "gross_profit": 470256.85,
+      "units": 22471,
+      "line_items": 879,
+      "avg_unit_price": 43.381,
+      "orders": 617,
+      "margin_pct": 0.4706,
+      "revenue_per_order": 1619.4394,
+      "revenue_share": 0.1927
+    },
+    "Furniture": {
+      "revenue": 87894.82,
+      "gross_profit": 45141.87,
+      "units": 3602,
+      "line_items": 168,
+      "avg_unit_price": 25.3089,
+      "orders": 146,
+      "margin_pct": 0.5136,
+      "revenue_per_order": 602.0193,
+      "revenue_share": 0.0169
+    }
+  },
+  "discount_bands": {
+    "0%": {
+      "line_items": 490,
+      "avg_qty": 26.0694,
+      "avg_revenue": 850.1384,
+      "avg_gross_profit": 385.5366,
+      "avg_net_contribution": 379.7623,
+      "total_revenue": 416567.81,
+      "total_gross_profit": 188912.91,
+      "margin_pct": 0.4535
+    },
+    "1%": {
+      "line_items": 413,
+      "avg_qty": 23.0218,
+      "avg_revenue": 1144.5622,
+      "avg_gross_profit": 517.5256,
+      "avg_net_contribution": 500.2206,
+      "total_revenue": 472704.2,
+      "total_gross_profit": 213738.06,
+      "margin_pct": 0.4522
+    },
+    "2%": {
+      "line_items": 368,
+      "avg_qty": 25.0924,
+      "avg_revenue": 908.3508,
+      "avg_gross_profit": 431.9338,
+      "avg_net_contribution": 408.5222,
+      "total_revenue": 334273.1,
+      "total_gross_profit": 158951.63,
+      "margin_pct": 0.4755
+    },
+    "3%": {
+      "line_items": 653,
+      "avg_qty": 27.7887,
+      "avg_revenue": 1122.6972,
+      "avg_gross_profit": 511.829,
+      "avg_net_contribution": 472.8104,
+      "total_revenue": 733121.26,
+      "total_gross_profit": 334224.35,
+      "margin_pct": 0.4559
+    },
+    "4%": {
+      "line_items": 459,
+      "avg_qty": 27.7015,
+      "avg_revenue": 1431.8506,
+      "avg_gross_profit": 673.5584,
+      "avg_net_contribution": 610.1214,
+      "total_revenue": 657219.42,
+      "total_gross_profit": 309163.29,
+      "margin_pct": 0.4704
+    },
+    "5%": {
+      "line_items": 348,
+      "avg_qty": 26.5747,
+      "avg_revenue": 1286.775,
+      "avg_gross_profit": 590.2302,
+      "avg_net_contribution": 520.1168,
+      "total_revenue": 447797.7,
+      "total_gross_profit": 205400.12,
+      "margin_pct": 0.4587
+    },
+    "6%": {
+      "line_items": 337,
+      "avg_qty": 25.7092,
+      "avg_revenue": 920.8994,
+      "avg_gross_profit": 429.0524,
+      "avg_net_contribution": 368.2184,
+      "total_revenue": 310343.1,
+      "total_gross_profit": 144590.67,
+      "margin_pct": 0.4659
+    },
+    "7%": {
+      "line_items": 508,
+      "avg_qty": 29.3484,
+      "avg_revenue": 1166.087,
+      "avg_gross_profit": 567.4259,
+      "avg_net_contribution": 480.556,
+      "total_revenue": 592372.19,
+      "total_gross_profit": 288252.34,
+      "margin_pct": 0.4866
+    },
+    "8%": {
+      "line_items": 411,
+      "avg_qty": 29.1338,
+      "avg_revenue": 890.3198,
+      "avg_gross_profit": 420.3489,
+      "avg_net_contribution": 344.3127,
+      "total_revenue": 365921.42,
+      "total_gross_profit": 172763.41,
+      "margin_pct": 0.4721
+    },
+    "9%": {
+      "line_items": 505,
+      "avg_qty": 25.2792,
+      "avg_revenue": 898.8614,
+      "avg_gross_profit": 432.0876,
+      "avg_net_contribution": 345.8205,
+      "total_revenue": 453925.01,
+      "total_gross_profit": 218204.23,
+      "margin_pct": 0.4807
+    },
+    "10%": {
+      "line_items": 507,
+      "avg_qty": 24.5582,
+      "avg_revenue": 793.0353,
+      "avg_gross_profit": 360.7296,
+      "avg_net_contribution": 276.3227,
+      "total_revenue": 402068.91,
+      "total_gross_profit": 182889.89,
+      "margin_pct": 0.4549
+    }
+  },
+  "discount_correlations": {
+    "order_qty": 0.0199,
+    "revenue": -0.0171,
+    "gross_profit": -0.0139,
+    "margin_pct": -0.01
+  },
+  "product_portfolio_quadrant_counts": {
+    "Star": 52,
+    "Rationalize": 52,
+    "Traffic Driver": 45,
+    "Niche": 45
+  },
+  "product_portfolio_top5_by_revenue": [
+    {
+      "Product Name": "Cando PC940 Copier",
+      "Product Category": "Office Supplies",
+      "revenue": 942279.06,
+      "margin_pct": 0.42,
+      "quadrant": "Star"
+    },
+    {
+      "Product Name": "HFX LaserJet 3310 Copier",
+      "Product Category": "Office Supplies",
+      "revenue": 557990.7,
+      "margin_pct": 0.37,
+      "quadrant": "Traffic Driver"
+    },
+    {
+      "Product Name": "UGen Ultra Professional Cordless Optical Suite",
+      "Product Category": "Office Supplies",
+      "revenue": 313230.14,
+      "margin_pct": 0.48,
+      "quadrant": "Star"
+    },
+    {
+      "Product Name": "Deluxe Rollaway Locking File with Drawer",
+      "Product Category": "Office Supplies",
+      "revenue": 241210.4,
+      "margin_pct": 0.57,
+      "quadrant": "Star"
+    },
+    {
+      "Product Name": "HFX LaserJet 3310 Copier",
+      "Product Category": "Technology",
+      "revenue": 214196.43,
+      "margin_pct": 0.37,
+      "quadrant": "Traffic Driver"
+    }
+  ],
+  "segment_summary": {
+    "Corporate": {
+      "revenue": 1753097.41,
+      "gross_profit": 835699.96,
+      "customers": 533,
+      "units": 45368,
+      "avg_discount_pct": 0.0483,
+      "orders": 937,
+      "margin_pct": 0.4767,
+      "revenue_per_customer": 3289.1133,
+      "orders_per_customer": 1.758,
+      "units_per_order": 48.4184
+    },
+    "Home Office": {
+      "revenue": 1352399.76,
+      "gross_profit": 614751.94,
+      "customers": 445,
+      "units": 32587,
+      "avg_discount_pct": 0.0551,
+      "orders": 760,
+      "margin_pct": 0.4546,
+      "revenue_per_customer": 3039.1006,
+      "orders_per_customer": 1.7079,
+      "units_per_order": 42.8776
+    },
+    "Small Business": {
+      "revenue": 1118020.73,
+      "gross_profit": 517311.97,
+      "customers": 412,
+      "units": 30306,
+      "avg_discount_pct": 0.0497,
+      "orders": 705,
+      "margin_pct": 0.4627,
+      "revenue_per_customer": 2713.6425,
+      "orders_per_customer": 1.7112,
+      "units_per_order": 42.9872
+    },
+    "Consumer": {
+      "revenue": 962796.22,
+      "gross_profit": 449327.03,
+      "customers": 391,
+      "units": 24128,
+      "avg_discount_pct": 0.0486,
+      "orders": 603,
+      "margin_pct": 0.4667,
+      "revenue_per_customer": 2462.3944,
+      "orders_per_customer": 1.5422,
+      "units_per_order": 40.0133
+    }
+  },
+  "pareto_concentration": {
+    "n_customers": 788,
+    "top10_customer_count": 79,
+    "top10_revenue_share": 0.5815836546360212,
+    "top20_customer_count": 158,
+    "top20_revenue_share": 0.8100515323202214
+  },
+  "rfm_segment_summary": {
+    "Champions": {
+      "customers": 213,
+      "total_revenue": 3394542.89,
+      "avg_recency_days": 193.3709,
+      "avg_frequency": 13.2676,
+      "avg_monetary": 15936.8211,
+      "customer_share": 0.2703,
+      "revenue_share": 0.6545
+    },
+    "At Risk (was high-value)": {
+      "customers": 111,
+      "total_revenue": 1261080.07,
+      "avg_recency_days": 867.4595,
+      "avg_frequency": 8.0901,
+      "avg_monetary": 11361.0817,
+      "customer_share": 0.1409,
+      "revenue_share": 0.2432
+    },
+    "Potential Loyalist": {
+      "customers": 134,
+      "total_revenue": 232180.72,
+      "avg_recency_days": 640.4701,
+      "avg_frequency": 1.6567,
+      "avg_monetary": 1732.6919,
+      "customer_share": 0.1701,
+      "revenue_share": 0.0448
+    },
+    "Loyal": {
+      "customers": 115,
+      "total_revenue": 201621.31,
+      "avg_recency_days": 248.8,
+      "avg_frequency": 2.2696,
+      "avg_monetary": 1753.2288,
+      "customer_share": 0.1459,
+      "revenue_share": 0.0389
+    },
+    "High-Value Occasional": {
+      "customers": 6,
+      "total_revenue": 51802.32,
+      "avg_recency_days": 412.3333,
+      "avg_frequency": 1.0,
+      "avg_monetary": 8633.72,
+      "customer_share": 0.0076,
+      "revenue_share": 0.01
+    },
+    "Dormant": {
+      "customers": 209,
+      "total_revenue": 45086.81,
+      "avg_recency_days": 968.6938,
+      "avg_frequency": 1.067,
+      "avg_monetary": 215.7264,
+      "customer_share": 0.2652,
+      "revenue_share": 0.0087
+    }
+  },
+  "seasonal_index_by_month": {
+    "1": {
+      "revenue": 354121.21,
+      "units": 10070,
+      "orders": 283,
+      "aov": 1251.31,
+      "revenue_index": 81.94,
+      "aov_index": 88.14,
+      "orders_index": 93.02
+    },
+    "2": {
+      "revenue": 516461.3,
+      "units": 12038,
+      "orders": 332,
+      "aov": 1555.61,
+      "revenue_index": 119.5,
+      "aov_index": 109.58,
+      "orders_index": 109.12
+    },
+    "3": {
+      "revenue": 335677.94,
+      "units": 9644,
+      "orders": 288,
+      "aov": 1165.55,
+      "revenue_index": 77.67,
+      "aov_index": 82.1,
+      "orders_index": 94.66
+    },
+    "4": {
+      "revenue": 292322.85,
+      "units": 6868,
+      "orders": 202,
+      "aov": 1447.14,
+      "revenue_index": 67.64,
+      "aov_index": 101.94,
+      "orders_index": 66.39
+    },
+    "5": {
+      "revenue": 497395.19,
+      "units": 13659,
+      "orders": 392,
+      "aov": 1268.87,
+      "revenue_index": 115.09,
+      "aov_index": 89.38,
+      "orders_index": 128.84
+    },
+    "6": {
+      "revenue": 368179.95,
+      "units": 11891,
+      "orders": 291,
+      "aov": 1265.22,
+      "revenue_index": 85.19,
+      "aov_index": 89.12,
+      "orders_index": 95.65
+    },
+    "7": {
+      "revenue": 409576.62,
+      "units": 12248,
+      "orders": 326,
+      "aov": 1256.37,
+      "revenue_index": 94.77,
+      "aov_index": 88.5,
+      "orders_index": 107.15
+    },
+    "8": {
+      "revenue": 501017.71,
+      "units": 11418,
+      "orders": 340,
+      "aov": 1473.58,
+      "revenue_index": 115.92,
+      "aov_index": 103.8,
+      "orders_index": 111.75
+    },
+    "9": {
+      "revenue": 421816.73,
+      "units": 11083,
+      "orders": 321,
+      "aov": 1314.07,
+      "revenue_index": 97.6,
+      "aov_index": 92.57,
+      "orders_index": 105.51
+    },
+    "10": {
+      "revenue": 594947.5,
+      "units": 12374,
+      "orders": 314,
+      "aov": 1894.74,
+      "revenue_index": 137.66,
+      "aov_index": 133.47,
+      "orders_index": 103.2
+    },
+    "11": {
+      "revenue": 345423.97,
+      "units": 8299,
+      "orders": 245,
+      "aov": 1409.89,
+      "revenue_index": 79.92,
+      "aov_index": 99.32,
+      "orders_index": 80.53
+    },
+    "12": {
+      "revenue": 549373.15,
+      "units": 12797,
+      "orders": 317,
+      "aov": 1733.04,
+      "revenue_index": 127.11,
+      "aov_index": 122.08,
+      "orders_index": 104.19
+    }
+  },
+  "peak_month": 10,
+  "trough_month": 4,
+  "revenue_driver_decomposition": {
+    "corr_revenue_orders": 0.6093,
+    "corr_revenue_aov": 0.7571,
+    "orders_share_of_log_variance": 0.4033,
+    "aov_share_of_log_variance": 0.6086,
+    "covariance_share_of_log_variance": -0.0119
+  },
+  "yearly_growth": [
+    {
+      "order_year": 2013,
+      "revenue": 1287553.59,
+      "units": 32518,
+      "customers": 276,
+      "orders": 624,
+      "aov": 2063.3872,
+      "revenue_per_customer": 4665.0492,
+      "months_observed": 11,
+      "is_partial_year": true,
+      "revenue_growth": NaN,
+      "customer_growth": NaN,
+      "order_growth": NaN
+    },
+    {
+      "order_year": 2014,
+      "revenue": 1166214.42,
+      "units": 30051,
+      "customers": 291,
+      "orders": 588,
+      "aov": 1983.3579,
+      "revenue_per_customer": 4007.6097,
+      "months_observed": 12,
+      "is_partial_year": false,
+      "revenue_growth": NaN,
+      "customer_growth": NaN,
+      "order_growth": NaN
+    },
+    {
+      "order_year": 2015,
+      "revenue": 1249967.37,
+      "units": 33883,
+      "customers": 325,
+      "orders": 690,
+      "aov": 1811.5469,
+      "revenue_per_customer": 3846.0534,
+      "months_observed": 12,
+      "is_partial_year": false,
+      "revenue_growth": 0.0718,
+      "customer_growth": 0.1168,
+      "order_growth": 0.1735
+    },
+    {
+      "order_year": 2016,
+      "revenue": 1371538.1,
+      "units": 32898,
+      "customers": 304,
+      "orders": 464,
+      "aov": 2955.9011,
+      "revenue_per_customer": 4511.6385,
+      "months_observed": 12,
+      "is_partial_year": false,
+      "revenue_growth": 0.0973,
+      "customer_growth": -0.0646,
+      "order_growth": -0.3275
+    },
+    {
+      "order_year": 2017,
+      "revenue": 111040.64,
+      "units": 3039,
+      "customers": 35,
+      "orders": 89,
+      "aov": 1247.6476,
+      "revenue_per_customer": 3172.5897,
+      "months_observed": 2,
+      "is_partial_year": true,
+      "revenue_growth": NaN,
+      "customer_growth": NaN,
+      "order_growth": NaN
+    }
+  ],
+  "geography": {
+    "NSW|Sydney": {
+      "revenue": 3675598.77,
+      "gross_profit": 1710453.9,
+      "customers": 581,
+      "units": 95619,
+      "orders": 1243,
+      "margin_pct": 0.4654,
+      "revenue_per_customer": 6326.3318,
+      "profit_per_customer": 2943.9826,
+      "revenue_share": 0.7087
+    },
+    "VIC|Melbourne": {
+      "revenue": 1510715.35,
+      "gross_profit": 706637.0,
+      "customers": 235,
+      "units": 36770,
+      "orders": 791,
+      "margin_pct": 0.4677,
+      "revenue_per_customer": 6428.576,
+      "profit_per_customer": 3006.966,
+      "revenue_share": 0.2913
+    }
+  },
+  "ship_mode_summary": {
+    "Delivery Truck": {
+      "line_items": 116,
+      "avg_ship_days": 2.172,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.309
+    },
+    "Express Air": {
+      "line_items": 632,
+      "avg_ship_days": 2.475,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.259
+    },
+    "Regular Air": {
+      "line_items": 4176,
+      "avg_ship_days": 2.735,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.518
+    }
+  },
+  "order_priority_summary": {
+    "Critical": {
+      "line_items": 871,
+      "avg_ship_days": 2.922,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.466
+    },
+    "High": {
+      "line_items": 1106,
+      "avg_ship_days": 2.374,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.645
+    },
+    "Medium": {
+      "line_items": 1027,
+      "avg_ship_days": 2.75,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.341
+    },
+    "Low": {
+      "line_items": 849,
+      "avg_ship_days": 3.494,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.676
+    },
+    "Not Specified": {
+      "line_items": 1071,
+      "avg_ship_days": 2.126,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.3
+    }
+  },
+  "express_air_roi": {
+    "Delivery Truck": {
+      "line_items": 116,
+      "avg_ship_days": 2.172,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.309,
+      "days_saved_vs_slowest": 0.563,
+      "cost_premium_vs_slowest": -0.21,
+      "cost_per_day_saved": -0.37305531914893647
+    },
+    "Express Air": {
+      "line_items": 632,
+      "avg_ship_days": 2.475,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.259,
+      "days_saved_vs_slowest": 0.26,
+      "cost_premium_vs_slowest": -0.259,
+      "cost_per_day_saved": -0.9954716629814933
+    },
+    "Regular Air": {
+      "line_items": 4176,
+      "avg_ship_days": 2.735,
+      "median_ship_days": 2.0,
+      "avg_shipping_cost": 5.518,
+      "days_saved_vs_slowest": 0.0,
+      "cost_premium_vs_slowest": 0.0,
+      "cost_per_day_saved": null
+    }
+  },
+  "account_manager_top5_by_revenue_per_customer": [
+    {
+      "Account Manager": "Stevie Bacata",
+      "revenue": 38987.97,
+      "customers": 5,
+      "revenue_per_customer": 7797.59,
+      "pct_corporate": 0.42
+    },
+    {
+      "Account Manager": "Preston Senome",
+      "revenue": 189874.07,
+      "customers": 31,
+      "revenue_per_customer": 6124.97,
+      "pct_corporate": 0.32
+    },
+    {
+      "Account Manager": "Nicholas Fernandes",
+      "revenue": 470598.74,
+      "customers": 77,
+      "revenue_per_customer": 6111.67,
+      "pct_corporate": 0.32
+    },
+    {
+      "Account Manager": "Connor Betts",
+      "revenue": 928249.39,
+      "customers": 155,
+      "revenue_per_customer": 5988.71,
+      "pct_corporate": 0.3
+    },
+    {
+      "Account Manager": "Yvette Biti",
+      "revenue": 580477.73,
+      "customers": 97,
+      "revenue_per_customer": 5984.31,
+      "pct_corporate": 0.28
+    }
+  ],
+  "account_manager_corporate_mix_correlation": 0.21
+}

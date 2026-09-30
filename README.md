@@ -111,6 +111,21 @@ The evaluation showed that the configuration with the highest retrieval precisio
 
 ---
 
+### [Retail Sales Analytics](./retail-sales-analytics)
+
+A business-question-driven analysis of a 5,000-line-item retail transaction dataset, decomposing revenue into profitability, customer value, seasonality, geography, and fulfillment operations.
+
+**Key features:**
+- Recomputes every financial metric from primitives (cost, price, quantity, discount %) after showing the dataset's own supplied subtotal/total columns don't reconcile with unit economics on 99% of rows
+- Full metrics suite: category profitability, discount-depth correlation, RFM customer segmentation, Pareto revenue concentration, year-over-year growth decomposition, geographic scale vs. customer quality, and fulfillment-speed testing
+- Renders a validated, accessibility-checked chart set summarizing each finding
+
+**Business value:** Demonstrates recomputing financial ground truth before analysis rather than trusting supplied aggregate fields, and decomposing a headline metric (e.g. revenue growth) into its underlying drivers instead of reporting it at face value. Headline finding: discount depth shows no measurable relationship to basket size or margin (|r| ≤ 0.02 on every measure), and two consecutive years grew revenue for structurally opposite reasons (more customers vs. bigger baskets).
+
+**Technologies:** Python, pandas, matplotlib
+
+---
+
 ## Technical Reference Projects
 
 ### [Cloud Platform Tool Index](./cloud-platform-tool-index)
