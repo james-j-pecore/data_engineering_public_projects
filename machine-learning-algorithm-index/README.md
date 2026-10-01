@@ -38,6 +38,8 @@ Table of Contents
 - Large Language Models
     - [Large Language Models (LLMs)](#large-language-models)
 	- [Retrieval Augmented Generation (RAG)](#retrieval-augmented-generation)
+- Similarity Search & Retrieval
+	- [Approximate Nearest Neighbors (ANN)](19.approximate-nearest-neighbors/README.md)
 
 ---
 
